@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
     {
         if (dashDurationTimer >= 0)
         {
-            rb.velocity = input * dashForce * Vector3.right;
+            rb.velocity = dashForce * Vector3.right;
         }
         else
         {
