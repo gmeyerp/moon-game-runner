@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     [Header("Dash Skill")]
     public bool isDashingH;
+    public bool isDashingV;
     [SerializeField] float horizontalDashCD = 1f;
     float horizontalDashTimer;
     [SerializeField] float dashDuration = 0.2f;
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
 
         if (isDashingH)
         {
-            Dash();
+            DashHorizontal();
         }
 
     }
@@ -154,7 +155,7 @@ public class Player : MonoBehaviour
         dashDurationTimer -= Time.deltaTime;
     }
 
-    private void Dash()
+    private void DashHorizontal()
     {
         if (dashDurationTimer >= 0)
         {
@@ -169,6 +170,7 @@ public class Player : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         isDashingH = false;
+        isDashingV = false;
     }
 }
 
