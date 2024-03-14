@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] float dashDuration = 0.2f;
     float dashDurationTimer;
     [SerializeField] float dashForce = 10f;
+    [SerializeField] float swipeDistance = 5f;
 
     [Header("Jump")]
     [SerializeField] float jumpForce = 800;
@@ -38,34 +39,74 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Vector3 forawrdMove = transform.forward * speed * Time.deltaTime;
-        rb.MovePosition(rb.position + forawrdMove);
+        UpdateTimer();
 
-        if(Input.touchCount>0&&Input.GetTouch(0).phase==TouchPhase.Began)
+        CheckPosition();
+        BaseMovement();
+        CheckInput();
+
+        if (isDashingH)
         {
-            startTouchPosition = Input.GetTouch(0).position;
+            Dash();
         }
 
-        if(Input.touchCount>0&&Input.GetTouch(0).phase==TouchPhase.Ended)
-        {
-            endTouchPosition = Input.GetTouch(0).position;
+    }
 
-            if(endTouchPosition.x < startTouchPosition.x)
+    private void CheckInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch firstTouch = Input.GetTouch(0);
+            if (firstTouch.phase == TouchPhase.Began)
+            {
+                startTouchPosition = firstTouch.position;
+                endTouchPosition = firstTouch.position;
+            }         
+
+            if (firstTouch.phase == TouchPhase.Ended)
+            {
+                endTouchPosition = firstTouch.position;
+
+                if (endTouchPosition.x >= startTouchPosition.x + swipeDistance || endTouchPosition.x <= startTouchPosition.x - swipeDistance)
+                {
+                    isDashingH = true;
+                    dashDurationTimer = dashDuration;
+
+                    horizontalDashTimer = 0f;
+                }
+                else if (isGrounded)
+                {
+                    Jump();
+                }
+            }
+
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+
+            if (endTouchPosition.x < startTouchPosition.x)
             {
                 isDashingH = true;
                 dashDurationTimer = dashDuration;
-                        
+
                 horizontalDashTimer = 0f;
             }
 
-            if(endTouchPosition.x < startTouchPosition.x)
+            if (endTouchPosition.x < startTouchPosition.x)
             {
                 isDashingH = true;
                 dashDurationTimer = dashDuration;
-                        
+
                 horizontalDashTimer = 0f;
             }
         }
+    }
+
+    private void Jump()
+    {
+        rb.AddForce(jumpForce * Vector3.up);
+        isGrounded = false;
     }
 
     private void Die()
@@ -76,32 +117,35 @@ public class Player : MonoBehaviour
     //Tipos de colisão com o player.
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
-		{
+        if (other.gameObject.tag == "Player")
+        {
             Die();
-		}
-        else if(other.gameObject.tag == "Atack")
-		{
+        }
+        else if (other.gameObject.tag == "Atack")
+        {
             //socore++;
             Die();
-		}
-        else if(other.gameObject.tag == "Especial")
-		{
+        }
+        else if (other.gameObject.tag == "Especial")
+        {
             //socore++;
             Die();
-		}
+        }
     }
 
-        private void CheckPosition()
+    private void CheckPosition()
     {
-        Ray ray = new Ray (transform.position, Vector3.down);
+        Ray ray = new Ray(transform.position, Vector3.down);
         isGrounded = Physics.Raycast(ray, groundDistance, isGround);
     }
 
     private void BaseMovement()
     {
-        if(!isDashingH)
-        rb.velocity = new Vector3 (faceDirection * speed, rb.velocity.y, rb.velocity.z);
+        if (!isDashingH)
+        {
+            Vector3 forawrdMove = transform.right * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + forawrdMove);
+        }
     }
 
     private void UpdateTimer()
@@ -111,15 +155,15 @@ public class Player : MonoBehaviour
     }
 
     private void Dash()
-    {        
+    {
         if (dashDurationTimer >= 0)
         {
-            rb.velocity = input * dashForce * Vector3.right;                
+            rb.velocity = input * dashForce * Vector3.right;
         }
         else
         {
             EndDash();
-        }                   
+        }
     }
     public void EndDash()
     {
