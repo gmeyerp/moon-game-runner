@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
     [SerializeField] float groundDistance;
     bool isGrounded;
 
+    [Header("VFX")]
+    [SerializeField] GameObject steps;
+    [SerializeField] ParticleSystem collectable;
+    [SerializeField] ParticleSystem dashFX;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,6 +53,7 @@ public class Player : MonoBehaviour
         BaseMovement();
         CheckInput();
 
+
         if (isDashingH)
         {
             DashHorizontal();
@@ -57,6 +63,7 @@ public class Player : MonoBehaviour
             DashVertical();
         }
 
+        steps.SetActive(isGrounded);
     }
 
     private void CheckInput()
@@ -78,6 +85,8 @@ public class Player : MonoBehaviour
                 {
                     if (horizontalDashTimer >= horizontalDashCD)
                     {
+                        dashFX.Play();
+
                         isDashingH = true;
                         dashDurationTimer = dashDuration;
 
@@ -88,9 +97,11 @@ public class Player : MonoBehaviour
                 {
                     if (verticalDashTimer >= verticalDashCD)
                     {
+                        dashFX.Play();
+                
                         isDashingV = true;
                         dashDurationTimer = dashDuration;
-
+                
                         verticalDashTimer = 0f;
                     }
                 }
@@ -184,6 +195,13 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
         isDashingH = false;
         isDashingV = false;
+
+        //dashVFX.Stop();
+    }
+
+    public void ActivateLightVFX()
+    {
+        collectable.Play();
     }
 }
 
