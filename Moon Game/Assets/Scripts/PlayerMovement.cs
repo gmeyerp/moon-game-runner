@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundDistance;
     bool isGrounded;
 
+    [Header("VFX")]
+    [SerializeField] ParticleSystem lightVFX;
+    [SerializeField] GameObject dustVFX;
+    [SerializeField] ParticleSystem dashVFX;
     /// <summary>
     /// Callback to draw gizmos that are pickable and always drawn.
     /// </summary>
@@ -49,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Dash();
         }
+
+        dustVFX.SetActive(isGrounded);
     }
 
     private void CheckInput()
@@ -57,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (input != 0 && horizontalDashTimer >= horizontalDashCD && Input.GetKey(KeyCode.Space))
         {
+            dashVFX.Play();
+
             isDashingH = true;
             dashDurationTimer = dashDuration;
                         
@@ -107,5 +115,11 @@ public class PlayerMovement : MonoBehaviour
     {
         myRb.velocity = Vector3.zero;
         isDashingH = false;
+        dashVFX.Stop();
+    }
+
+    public void ActivateLightVFX()
+    {
+        lightVFX.Play();
     }
 }

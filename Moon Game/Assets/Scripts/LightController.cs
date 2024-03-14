@@ -8,23 +8,30 @@ public class LightController : MonoBehaviour
     [SerializeField] float lightAngle;
     [SerializeField] float delta = 20f;
     [SerializeField] float lightIncrement = 10f;
+    [SerializeField][Range(0.1f, 1f)] float lerpSpeed = 0.2f;
     
     void Start()
     {
         lightComp = GetComponent<Light>();
         lightAngle = lightComp.spotAngle;
     }
+
+    void Update()
+    {
+        lightComp.spotAngle = Mathf.Lerp(lightComp.spotAngle, lightAngle, lerpSpeed);
+        lightComp.innerSpotAngle = Mathf.Lerp(lightComp.innerSpotAngle, lightAngle - delta, lerpSpeed);
+    }
+
     public void IncreaseLight()
     {
         lightAngle += lightIncrement;
-        lightComp.spotAngle = lightAngle;
-        lightComp.innerSpotAngle = lightAngle - delta;
-        Debug.Log(lightComp.spotAngle);
+        ///lightComp.spotAngle = lightAngle;
+        //lightComp.innerSpotAngle = lightAngle - delta;
     }
     public void DecreaseLight()
     {
         lightAngle -= lightIncrement;
-        lightComp.spotAngle = lightAngle;
-        lightComp.innerSpotAngle = lightAngle - delta;
+        //lightComp.spotAngle = lightAngle;
+        //lightComp.innerSpotAngle = lightAngle - delta;
     }
 }
