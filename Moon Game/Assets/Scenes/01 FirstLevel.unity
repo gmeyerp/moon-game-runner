@@ -1837,7 +1837,6 @@ GameObject:
   - component: {fileID: 2079483555}
   - component: {fileID: 2079483554}
   - component: {fileID: 2079483553}
-  - component: {fileID: 2079483558}
   - component: {fileID: 2079483559}
   m_Layer: 0
   m_Name: Player
@@ -1868,7 +1867,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 120
@@ -1963,29 +1962,6 @@ Transform:
   - {fileID: 1115480543}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2079483558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079483552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2420cddcb9df26d47bc01c402c91cc5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  faceDirection: 1
-  isDashingH: 0
-  horizontalDashCD: 1
-  dashDuration: 0.15
-  dashForce: 50
-  jumpForce: 850
-  isGround:
-    serializedVersion: 2
-    m_Bits: 64
-  groundDistance: 0.57
 --- !u!114 &2079483559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,12 +1980,13 @@ MonoBehaviour:
   isDashingH: 0
   horizontalDashCD: 1
   dashDuration: 0.2
-  dashForce: 10
-  jumpForce: 800
+  dashForce: 50
+  swipeDistance: 50
+  jumpForce: 1000
   isGround:
     serializedVersion: 2
-    m_Bits: 0
-  groundDistance: 0
+    m_Bits: 64
+  groundDistance: 0.57
 --- !u!1 &2111114908
 GameObject:
   m_ObjectHideFlags: 0
