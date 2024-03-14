@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>().gameObject.transform;
+        player = FindObjectOfType<Player>().gameObject.transform;
     }
 
     // Update is called once per frame
