@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm: {fileID: 7112398560555517094}
   sfx: {fileID: 3538517952816332813}
+  globalSounds:
+  - {fileID: 8300000, guid: eb1bcc0534dfe124189757c1d83aa610, type: 3}
 --- !u!1 &4359852384988837420
 GameObject:
   m_ObjectHideFlags: 0

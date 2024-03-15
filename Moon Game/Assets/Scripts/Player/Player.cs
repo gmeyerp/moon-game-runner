@@ -40,6 +40,10 @@ public class Player : MonoBehaviour
     [SerializeField] ParticleSystem collectable;
     [SerializeField] ParticleSystem dashFX;
 
+    [Header("SFX")]
+    [SerializeField] AudioClip dashSFX;
+    [SerializeField] AudioClip hitSFX;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -86,6 +90,7 @@ public class Player : MonoBehaviour
                     if (horizontalDashTimer >= horizontalDashCD)
                     {
                         dashFX.Play();
+                        SoundManager.instance.PlaySFX(dashSFX);                        
 
                         isDashingH = true;
                         dashDurationTimer = dashDuration;
@@ -98,7 +103,8 @@ public class Player : MonoBehaviour
                     if (verticalDashTimer >= verticalDashCD)
                     {
                         dashFX.Play();
-                
+                        SoundManager.instance.PlaySFX(dashSFX);
+
                         isDashingV = true;
                         dashDurationTimer = dashDuration;
                 
@@ -122,6 +128,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        SoundManager.instance.PlaySFX(hitSFX);
         GameManager.instance.PlayerLose();
     }
 
