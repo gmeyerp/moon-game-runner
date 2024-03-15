@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoonColletable : MonoBehaviour
-{    
+{
+    [SerializeField] AudioClip collectSFX;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -14,6 +15,8 @@ public class MoonColletable : MonoBehaviour
 
             Player player = other.GetComponent<Player>();
             player.ActivateLightVFX();
+
+            SoundManager.instance.PlaySFX(collectSFX);
         }
     }
 }
