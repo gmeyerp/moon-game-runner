@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
 
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
+    private LightController lightController;
 
     [Header("Base Stats")]
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
-
-
+    [SerializeField] float damagedLight = 40f;
 
     [Header("Dash Skill")]
     public bool isDashingH;
@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
     float dashDurationTimer;
     [SerializeField] float dashForce = 10f;
     [SerializeField] float swipeDistance = 5f;
-
 
     [Header("Jump")]
     [SerializeField] float jumpForce = 800;
@@ -44,9 +43,15 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip dashSFX;
     [SerializeField] AudioClip hitSFX;
 
+    [Header("Take Damage")]
+    float invulnerabilityTimer;    
+    bool isInvulnerable;
+    [SerializeField] float invulnerabilityCD = 1f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        lightController = GetComponentInChildren<LightController>();
     }
 
     void Update()
@@ -65,6 +70,12 @@ public class Player : MonoBehaviour
         else if (isDashingV)
         {
             DashVertical();
+        }
+
+        if (invulnerabilityTimer >= invulnerabilityCD)
+        {
+            isInvulnerable = false;
+            Debug.Log(isInvulnerable);
         }
 
         steps.SetActive(isGrounded);
@@ -116,7 +127,6 @@ public class Player : MonoBehaviour
                     Jump();
                 }
             }
-
         }
     }
 
@@ -126,29 +136,21 @@ public class Player : MonoBehaviour
         isGrounded = false;
     }
 
-    private void Die()
+    public void Die()
     {
         SoundManager.instance.PlaySFX(hitSFX);
         GameManager.instance.PlayerLose();
     }
 
-    //Tipos de colis�o com o player.
-    void OnTriggerEnter(Collider other)
+    public void TakeDamage()
     {
-        if (other.gameObject.tag == "EnemyAttack")
+        if (!isInvulnerable)
         {
-            Die();
-        }
-        else if (other.gameObject.tag == "Body")
-        {
-            //socore++;
-            Die();
-        }
-        else if (other.gameObject.tag == "Especial")
-        {
-            //socore++;
-            Die();
-        }
+            lightController.DecreaseLight(damagedLight);
+            isInvulnerable = true;
+            Debug.Log(isInvulnerable);
+            invulnerabilityTimer = 0;
+        }        
     }
 
     private void CheckPosition()
@@ -171,6 +173,7 @@ public class Player : MonoBehaviour
         horizontalDashTimer += Time.deltaTime;
         verticalDashTimer += Time.deltaTime;
         dashDurationTimer -= Time.deltaTime;
+        invulnerabilityTimer += Time.deltaTime;
     }
 
     private void DashHorizontal()

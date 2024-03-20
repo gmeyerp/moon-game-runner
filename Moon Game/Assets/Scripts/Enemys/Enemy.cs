@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Enemy : MonoBehaviour
 {
+    enum Vulnerability {Horizontal, Vertical, None};
     public int enemyScore;
     private Rigidbody rb;
 
     [Header("Base Stats")]
-    [SerializeField] float speed = 2f;
+    [SerializeField] float speed;
+    [SerializeField] Vulnerability vulnerability;
 
 
 
@@ -19,8 +22,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        Vector3 forawrdMove = transform.forward * speed * Time.deltaTime;
-        rb.MovePosition(rb.position + forawrdMove);
+        //Vector3 forawrdMove = transform.forward * speed * Time.deltaTime;
+        //rb.MovePosition(rb.position + forawrdMove);
     }
 
     private void Die()
@@ -28,23 +31,38 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //Tipos de colisão com o player.
+    //Tipos de colisï¿½o com o player.
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
 		{
-            Die();
-		}
-        else if(other.gameObject.tag == "Atack")
-		{
-            //socore++;
-            Die();
-		}
-        else if(other.gameObject.tag == "Especial")
-		{
-            //socore++;
-            Die();
-		}
+            Player player = other.GetComponent<Player>();            
+            switch (vulnerability)
+            {
+                case Vulnerability.Horizontal:
+                {
+                    if (player.isDashingH)
+                        Die();
+                    else
+                    player.TakeDamage();                    
+                    break;
+                }
 
+                case Vulnerability.Vertical:
+                {
+                    if (player.isDashingV)
+                        Die();
+                    else
+                    player.TakeDamage();                    
+                    break;
+                }
+                
+                case Vulnerability.None:
+                {
+                    player.TakeDamage();
+                    break;
+                }
+            }
+        }        
     }
 }
