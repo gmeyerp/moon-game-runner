@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     public void PlayerLose()
     {
         SceneManager.LoadScene(2);
+    }
 
+    public void PlayerWin()
+    {
+        SceneManager.LoadScene(3);
     }
 }

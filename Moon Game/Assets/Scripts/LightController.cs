@@ -28,9 +28,15 @@ public class LightController : MonoBehaviour
         ///lightComp.spotAngle = lightAngle;
         //lightComp.innerSpotAngle = lightAngle - delta;
     }
-    public void DecreaseLight()
+    public void DecreaseLight(float amount)
     {
-        lightAngle -= lightIncrement;
+        if (lightAngle == amount)
+        {
+            Player player = GetComponentInParent<Player>();
+            player.Die();
+        }
+        lightAngle = amount;
+        
         //lightComp.spotAngle = lightAngle;
         //lightComp.innerSpotAngle = lightAngle - delta;
     }
