@@ -2753,6 +2753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7fe59ab5901074ca0cb59de3bb2db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winSFX: {fileID: 8300000, guid: 813bbdb8146417442a4c1b666c3b2e9d, type: 3}
 --- !u!1001 &1878589665
 PrefabInstance:
   m_ObjectHideFlags: 0

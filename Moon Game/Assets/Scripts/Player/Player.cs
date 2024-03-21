@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public int enemyScore;
     private Rigidbody rb;
+    Animator animator;
 
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
+        animator = GetComponent<Animator>();  
     }
 
     void Update()
@@ -150,6 +152,8 @@ public class Player : MonoBehaviour
             isInvulnerable = true;
             Debug.Log(isInvulnerable);
             invulnerabilityTimer = 0;
+            SoundManager.instance.PlaySFX(hitSFX);
+            animator.SetTrigger("TakeDamage");
         }        
     }
 

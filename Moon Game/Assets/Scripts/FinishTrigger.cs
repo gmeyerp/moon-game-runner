@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FinishTrigger : MonoBehaviour
 {
+    [SerializeField] AudioClip winSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,10 @@ public class FinishTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        GameManager.instance.PlayerWin();
+        {
+            SoundManager.instance.PlaySFX(winSFX);
+            GameManager.instance.PlayerWin();
+
+        }
     }
 }
