@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] float speed;
     [SerializeField] Vulnerability vulnerability;
+    [SerializeField] GameObject deathVFX;
 
 
 
@@ -28,7 +29,8 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Instantiate(deathVFX, transform.position, Quaternion.identity);
+        Destroy(gameObject);        
     }
 
     //Tipos de colis�o com o player.

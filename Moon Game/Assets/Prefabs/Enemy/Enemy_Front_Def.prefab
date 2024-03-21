@@ -227,6 +227,8 @@ MonoBehaviour:
   enemyScore: 0
   speed: 0
   vulnerability: 1
+  deathVFX: {fileID: 7486234987976697870, guid: 63a1ccb303e202e4e957a5fea2085e9c,
+    type: 3}
 --- !u!1 &4244774285004167642
 GameObject:
   m_ObjectHideFlags: 0

@@ -2753,6 +2753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7fe59ab5901074ca0cb59de3bb2db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winSFX: {fileID: 8300000, guid: 813bbdb8146417442a4c1b666c3b2e9d, type: 3}
 --- !u!1001 &1878589665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3209,6 +3210,7 @@ GameObject:
   - component: {fileID: 2079483554}
   - component: {fileID: 2079483553}
   - component: {fileID: 2079483559}
+  - component: {fileID: 2079483560}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3367,6 +3369,27 @@ MonoBehaviour:
   dashSFX: {fileID: 8300000, guid: bc2be18e7d1afd54783f12b29f379f41, type: 3}
   hitSFX: {fileID: 8300000, guid: a74f0863a681c5249a631c765563a041, type: 3}
   invulnerabilityCD: 1
+--- !u!95 &2079483560
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079483552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e150342283156934eb3005223aa45f0a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2089416382
 PrefabInstance:
   m_ObjectHideFlags: 0
