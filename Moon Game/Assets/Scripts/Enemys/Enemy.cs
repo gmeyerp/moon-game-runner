@@ -29,7 +29,8 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Instantiate(deathVFX, transform.position, Quaternion.identity);
+        GameObject vfxObject = Instantiate(deathVFX, transform.position, deathVFX.transform.rotation);
+        Debug.Log(vfxObject.name);
         Destroy(gameObject);        
     }
 
