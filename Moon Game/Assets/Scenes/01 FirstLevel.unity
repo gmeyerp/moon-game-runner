@@ -1676,8 +1676,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightAngle: 40
   delta: 20
-  lightIncrement: 20
-  lerpSpeed: 0.2
+  lightIncrement: 14
+  lerpSpeed: 0.08
+  incrementsNumber: 10
+  amoutToDie: 4
+  decreaseSpeed: 5
 --- !u!1 &1169697465
 GameObject:
   m_ObjectHideFlags: 0

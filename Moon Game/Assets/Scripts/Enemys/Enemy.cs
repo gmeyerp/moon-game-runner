@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] Vulnerability vulnerability;
     [SerializeField] GameObject deathVFX;
+    Player player;
 
 
 
@@ -30,7 +31,8 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         GameObject vfxObject = Instantiate(deathVFX, transform.position, deathVFX.transform.rotation);
-        Debug.Log(vfxObject.name);
+        player.PlayerIncreseLight();
+        //Debug.Log(vfxObject.name);
         Destroy(gameObject);        
     }
 
@@ -39,7 +41,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
 		{
-            Player player = other.GetComponent<Player>();            
+            player = other.GetComponent<Player>();            
             switch (vulnerability)
             {
                 case Vulnerability.Horizontal:
