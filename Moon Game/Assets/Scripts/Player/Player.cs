@@ -148,13 +148,18 @@ public class Player : MonoBehaviour
     {
         if (!isInvulnerable)
         {
-            lightController.DecreaseLight(damagedLight);
+            lightController.DecreaseLight(5, true);
             isInvulnerable = true;
             Debug.Log(isInvulnerable);
             invulnerabilityTimer = 0;
             SoundManager.instance.PlaySFX(hitSFX);
             animator.SetTrigger("TakeDamage");
         }        
+    }
+
+    public void PlayerIncreseLight()
+    {
+        lightController.IncreaseLight();
     }
 
     private void CheckPosition()
