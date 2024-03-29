@@ -1679,8 +1679,10 @@ MonoBehaviour:
   lightIncrement: 14
   lerpSpeed: 0.08
   incrementsNumber: 10
-  amoutToDie: 4
+  amountToDie: 4
   decreaseSpeed: 5
+  intensityRange: 40
+  flickerCD: 0.15
 --- !u!1 &1169697465
 GameObject:
   m_ObjectHideFlags: 0
