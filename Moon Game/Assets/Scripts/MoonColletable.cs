@@ -9,13 +9,12 @@ public class MoonColletable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LightController light = other.GetComponentInChildren<LightController>();
-            light.IncreaseLight();
-            Destroy(gameObject);
 
             Player player = other.GetComponent<Player>();
             player.ActivateLightVFX();
+            player.PlayerIncreseLight();
 
+            Destroy(gameObject);
             SoundManager.instance.PlaySFX(collectSFX);
         }
     }

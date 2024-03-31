@@ -172,8 +172,8 @@ public class Player : MonoBehaviour
     {
         if (!isDashingH)
         {
-            Vector3 forawrdMove = transform.right * speed * Time.deltaTime;
-            rb.MovePosition(rb.position + forawrdMove);
+            Vector3 forwardMove = transform.right * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + forwardMove);
         }
     }
 
