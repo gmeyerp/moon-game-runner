@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject steps;
     [SerializeField] ParticleSystem collectable;
     [SerializeField] ParticleSystem dashFX;
+    [SerializeField] ParticleSystem hitVFX;
 
     [Header("SFX")]
     [SerializeField] AudioClip dashSFX;
@@ -153,6 +154,7 @@ public class Player : MonoBehaviour
             Debug.Log(isInvulnerable);
             invulnerabilityTimer = 0;
             SoundManager.instance.PlaySFX(hitSFX);
+            hitVFX.Play();
             animator.SetTrigger("TakeDamage");
         }        
     }
