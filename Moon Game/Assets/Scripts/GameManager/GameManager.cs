@@ -5,25 +5,41 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+  public static GameManager instance;
+  private Scene currentScene;
 
-    void Awake()
+  void Awake()
+  {
+    if (instance == null)
+    instance = this;
+    else
+    Destroy(gameObject);
+
+    DontDestroyOnLoad(gameObject);
+
+    currentScene = SceneManager.GetActiveScene();
+    defineOrientation(currentScene);
+  }
+
+  public void PlayerLose()
+  {
+    SceneManager.LoadScene(2);
+  }
+
+  public void PlayerWin()
+  {
+    SceneManager.LoadScene(3);
+  }
+
+  private void defineOrientation(Scene scene)
+  {
+    if (scene.name == "00 StartScene" || scene.name == "01 FirstLevel" || scene.name == "02 LoseScene" || scene.name == "03 Win Scene")
     {
-        if (instance == null)
-        instance = this;
-        else
-        Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
+      Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
-
-    public void PlayerLose()
+    else if(scene.name == "04 SecondLevel")
     {
-        SceneManager.LoadScene(2);
+      Screen.orientation = ScreenOrientation.Portrait;
     }
-
-    public void PlayerWin()
-    {
-        SceneManager.LoadScene(3);
-    }
+  }
 }
