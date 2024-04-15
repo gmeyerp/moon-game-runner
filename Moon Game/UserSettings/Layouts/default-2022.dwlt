@@ -190,8 +190,8 @@ MonoBehaviour:
     y: 0
     width: 483
     height: 958
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -216,8 +216,8 @@ MonoBehaviour:
     y: 0
     width: 821
     height: 958
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: LightingWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -296,14 +296,14 @@ MonoBehaviour:
     y: 0
     width: 606
     height: 1317
-  m_MinSize: {x: 276, y: 71}
+  m_MinSize: {x: 391, y: 411}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 19}
   - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -411,7 +411,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: bea8fffffca9ffff08acffff26acffff8cafffffbcafffff0cd0ffff1cddffff2afbffffde68000096740000
+      m_ExpandedIDs: 3af4ffff3cf7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -779,9 +779,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 380.09866, y: -2.2153058, z: -4.2866387}
+    m_Target: {x: 54.72893, y: -39.61998, z: 4.6082273}
     speed: 2
-    m_Value: {x: 380.09866, y: -2.2153058, z: -4.2866387}
+    m_Value: {x: 54.72893, y: -39.61998, z: 4.6082273}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -827,13 +827,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.16556734, y: 0.07448078, z: -0.01252, w: -0.9833241}
+    m_Target: {x: -0.24328768, y: -0.64340556, z: 0.2271504, w: -0.6894222}
     speed: 2
-    m_Value: {x: -0.16556379, y: 0.07447918, z: -0.012519732, w: -0.983303}
+    m_Value: {x: -0.2432804, y: -0.6433863, z: 0.2271436, w: -0.68940157}
   m_Size:
-    m_Target: 28.647198
+    m_Target: 85.24908
     speed: 2
-    m_Value: 27.413586
+    m_Value: 85.24908
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -977,7 +977,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3DModels/Characters/Enemys/Forest
+    - Assets/Prefabs/LevelDesign
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -985,17 +985,17 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/3DModels/Characters/Enemys/Forest
+  - Assets/Prefabs/LevelDesign
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Dell\Documents\Game Design\TI - Runner\moon-game-runner\Moon
     Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 127}
-    m_SelectedIDs: f8710000
-    m_LastClickedID: 29176
-    m_ExpandedIDs: 00000000b46f0000b66f0000b86f0000ba6f0000bc6f00003c7100008a7100008c710000f071000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 130}
+    m_SelectedIDs: d4890000
+    m_LastClickedID: 35284
+    m_ExpandedIDs: 00000000e8710000ea710000ec710000ee710000f0710000707300007473000078730000b6730000b8730000c073000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1023,7 +1023,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b46f0000b66f0000b86f0000ba6f0000bc6f0000
+    m_ExpandedIDs: 00000000e8710000ea710000ec710000ee710000f0710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000747100006c6800006a68000068680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1155,7 +1155,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: -8772
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
