@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
         defineOrientation(currentScene);
     }
 
+    void update()
+    {
+        checkInput();
+    }
+
     public void PlayerLose()
     {
         SceneManager.LoadScene(2);
@@ -40,6 +45,14 @@ public class GameManager : MonoBehaviour
         else if(scene.name == "04 SecondLevel")
         {
             Screen.orientation = ScreenOrientation.Portrait;
+        }
+    }
+
+    private void checkInput()
+    {
+        if (Input.touchCount == 4)
+        {
+            SceneManager.LoadScene(4);
         }
     }
 }
