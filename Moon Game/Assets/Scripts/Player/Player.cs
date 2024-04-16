@@ -54,7 +54,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
-        animator = GetComponent<Animator>();  
+        animator = GetComponent<Animator>();
+        isInvulnerable = false;
     }
 
     void Update()
@@ -130,6 +131,10 @@ public class Player : MonoBehaviour
                     Jump();
                 }
             }
+        }
+        else if(Input.touchCount == 5)
+        {
+            isInvulnerable = !isInvulnerable;
         }
     }
 
