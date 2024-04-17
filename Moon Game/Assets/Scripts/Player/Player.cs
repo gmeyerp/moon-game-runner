@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
-    [SerializeField] float damagedLight = 40f;
 
     [Header("Dash Skill")]
     public bool isDashingH;
