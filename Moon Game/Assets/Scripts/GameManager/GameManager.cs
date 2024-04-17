@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private Scene currentScene;
+    [SerializeField] GameObject pauseMenu;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 
         currentScene = SceneManager.GetActiveScene();
         defineOrientation(currentScene);
+        pauseMenu.SetActive(false);
     }
 
     void update()
@@ -54,5 +56,17 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(4);
         }
+    }
+
+    public void pauseGame()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void resumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
