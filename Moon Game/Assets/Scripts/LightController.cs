@@ -20,6 +20,7 @@ public class LightController : MonoBehaviour
     [SerializeField] float intensityRange;
     float flickerTimer = 0.3f;
     [SerializeField] float flickerCD = 0.3f;
+    bool isDecaying = true;
 
     
     void Start()
@@ -35,7 +36,10 @@ public class LightController : MonoBehaviour
 
     void Update()
     {
-        DecreaseLight(decreaseSpeed * Time.deltaTime, false);
+        if (isDecaying)
+        {
+            DecreaseLight(decreaseSpeed * Time.deltaTime, false);
+        }
 
         lightComp.spotAngle = Mathf.Lerp(lightComp.spotAngle, lightAngle, lerpSpeed);
         lightComp.innerSpotAngle = Mathf.Lerp(lightComp.innerSpotAngle, lightAngle - delta, lerpSpeed);
@@ -97,28 +101,28 @@ public class LightController : MonoBehaviour
         }
     }
 
-    public void DecreaseLight(float amount, bool kill)
+    public void DecreaseLight(float decreaseAmount, bool kill)
     {
         if (lightAngle <= minAmount + amountToDie * lightIncrement && kill)
         {
             Player player = GetComponentInParent<Player>();
             player.Die();
         }
-        lightAngle -= amount;
+        lightAngle -= decreaseAmount;
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
         
         //lightComp.spotAngle = lightAngle;
         //lightComp.innerSpotAngle = lightAngle - delta;
     }
 
-    public void DecreaseLight(int amount, bool kill)
+    public void DecreaseLight(int incrementsDecrease, bool kill)
     {
         if (lightAngle <= minAmount + amountToDie * lightIncrement && kill)
         {
             Player player = GetComponentInParent<Player>();
             player.Die();
         }
-        lightAngle -= amount * lightIncrement;
+        lightAngle -= incrementsDecrease * lightIncrement;
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
     }
 
@@ -137,5 +141,10 @@ public class LightController : MonoBehaviour
     {        
         newIntensity = normalIntensity - Random.Range(0, intensityRange);  
         flickerTimer = flickerCD;            
+    }
+
+    public void SwitchLightDecay(bool isDecaying)
+    {
+        this.isDecaying = isDecaying;
     }
 }

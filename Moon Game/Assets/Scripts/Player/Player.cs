@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     bool isInvulnerable;
     [SerializeField] float invulnerabilityCD = 1f;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
@@ -82,6 +82,11 @@ public class Player : MonoBehaviour
         }
 
         steps.SetActive(isGrounded);
+    }
+
+    public LightController ReturnLightSource()
+    {
+        return lightController;
     }
 
     private void CheckInput()
@@ -166,6 +171,11 @@ public class Player : MonoBehaviour
     public void PlayerIncreseLight()
     {
         lightController.IncreaseLight();
+    }
+
+    public void SwitchLightDecay(bool isDecaying)
+    {
+        lightController.SwitchLightDecay(isDecaying);
     }
 
     private void CheckPosition()
