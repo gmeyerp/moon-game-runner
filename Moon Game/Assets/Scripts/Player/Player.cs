@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
                         horizontalDashTimer = 0f;
                     }                    
                 }
-                else if (endTouchPosition.y >= startTouchPosition.y + swipeDistance || endTouchPosition.y <= startTouchPosition.y - swipeDistance)
+                else if (endTouchPosition.y <= startTouchPosition.y - swipeDistance)
                 {
                     if (verticalDashTimer >= verticalDashCD)
                     {

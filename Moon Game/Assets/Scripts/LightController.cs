@@ -26,7 +26,7 @@ public class LightController : MonoBehaviour
     {
         lightComp = GetComponent<Light>();
         lightIncrement = (maxAmount-minAmount)/incrementsNumber; //calculando o valor de cada incremento
-        lightAngle = minAmount + lightIncrement * incrementsNumber/2; //colocando o valor inicial em 50% dos incrementos
+        lightAngle = maxAmount; //colocando o valor inicial no maximo
 
         lightComp.spotAngle = lightAngle; //colocando o angulo da luz no valor inicial
         lightComp.innerSpotAngle = lightAngle - delta;
@@ -52,17 +52,30 @@ public class LightController : MonoBehaviour
     public void IncreaseLight()
     {
         lightAngle += lightIncrement;
+
+        if (lightAngle > minAmount + amountToDie) //caso o jogador esteja morrendo, a luz recupera mais intensamente para evitar feedback negativo
+        {
+            lightAngle += lightIncrement;
+        }
+
         if (lightAngle > minAmount + amountToDie)
         {
             newIntensity = normalIntensity;
         }
+
         ///lightComp.spotAngle = lightAngle;
         //lightComp.innerSpotAngle = lightAngle - delta;
     }
 
-    public void IncreaseLight(int amount)
+    public void IncreaseLight(int incrementsAmount)
     {
-        lightAngle += amount * lightIncrement;
+        lightAngle += incrementsAmount * lightIncrement;
+
+        if (lightAngle > minAmount + amountToDie) //caso o jogador esteja morrendo, a luz recupera mais intensamente para evitar feedback negativo
+        {
+            lightAngle += lightIncrement;
+        }
+
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
 
         if (lightAngle > minAmount + amountToDie)
@@ -75,6 +88,7 @@ public class LightController : MonoBehaviour
     {
         if (full)
             lightAngle = maxAmount;
+
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
 
         if (lightAngle > minAmount + amountToDie)

@@ -3427,13 +3427,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightAngle: 40
-  delta: 20
+  delta: 40
   lightIncrement: 14
   lerpSpeed: 0.08
-  incrementsNumber: 10
-  amountToDie: 4
-  decreaseSpeed: 3
-  intensityRange: 40
+  incrementsNumber: 8
+  amountToDie: 3
+  decreaseSpeed: 7
+  intensityRange: 30
   flickerCD: 0.15
 --- !u!1001 &1144165928
 PrefabInstance:
@@ -7727,6 +7727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StepsVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578083284645867874, guid: c594102fde0df99418795c2e4ce4f035,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
