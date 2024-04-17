@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private Scene currentScene;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] private AudioMixer audioMixer;
 
     void Awake()
     {
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
         checkInput();
     }
 
+    //Stage Progression
+
     public void PlayerLose()
     {
         SceneManager.LoadScene(2);
@@ -37,6 +41,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    //Device Orientation Manager
 
     private void defineOrientation(Scene scene)
     {
@@ -50,6 +56,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Cheat Warp to Stage II
+
     private void checkInput()
     {
         if (Input.touchCount == 4)
@@ -57,6 +65,8 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(4);
         }
     }
+
+    //Pause Menu
 
     public void pauseGame()
     {
@@ -68,5 +78,12 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    //Settings Menu
+
+    public void setVolume (float volume)
+    {
+        audioMixer.SetFloat("volume", volume);
     }
 }
