@@ -6,7 +6,6 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     Player player;
-    LightController lightController;
     Animator animator;
     bool isDamaged;
 
@@ -16,8 +15,9 @@ public class Boss : MonoBehaviour
     [SerializeField] float floatSpeed = 0.5f;
 
     [Header("Attack")]
-    [SerializeField] float drainDelay = 1.5f;
-    [SerializeField] float attackCD;
+    [SerializeField] float drainEffectTimer = 1.5f;
+    [SerializeField] float drainFinishTimer = 1.5f;
+    [SerializeField] float trapsEffectTimer = 2.3f;
     [SerializeField] GameObject[] trapsPrefab;
 
     [Header("VFX SFX")]
@@ -28,10 +28,8 @@ public class Boss : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        lightController = player.ReturnLightSource();
         //animator = GetComponent<Animator>();
-
-        lightController.SwitchLightDecay(false);
+        LightController.playerLight.SwitchLightDecay(false);
         DrainLight();
     }
 
@@ -44,24 +42,40 @@ public class Boss : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, newPos, floatSpeed);
         }
     }
-
-    public void DrainLight()
+    void DrainLight()
     {
         drainVFX.Play();
-        StartCoroutine(CDrainTimer(drainDelay));
+        StartCoroutine(CDrainTimer(drainEffectTimer, drainFinishTimer));
     }
 
-    IEnumerator CDrainTimer(float drainDelay)
+    IEnumerator CDrainTimer(float drainDelay, float drainFinish)
     {
         yield return new WaitForSeconds(drainDelay);
         Debug.Log("Drain");
-        lightController.DecreaseLight(false);
+        LightController.playerLight.DecreaseLight(false);
+        yield return new WaitForSeconds(drainFinish);
+        ActivateTraps();
     }
-
-    public void CreateTraps()
+    void CreateTraps()
     {
         int trapIndex = Random.Range(0, trapsPrefab.Length);
         Vector3 trapPos = new Vector3(transform.position.x, 0, 0);
         Instantiate(trapsPrefab[trapIndex], trapPos, Quaternion.identity);
     }
+
+    IEnumerator CTrapsTimer(float trapsActivateTimer)
+    {
+        yield return new WaitForSeconds(trapsActivateTimer);
+        CreateTraps();
+    }
+
+    void ActivateTraps()
+    {
+        trapVFX.Play();
+        StartCoroutine(CTrapsTimer(trapsEffectTimer));
+    }
+
+
+
+    
 }

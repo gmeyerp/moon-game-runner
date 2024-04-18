@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
+    public static LightController playerLight;
     Light lightComp;
     [SerializeField] float lightAngle;
     [SerializeField] float delta = 20f;
@@ -16,13 +17,26 @@ public class LightController : MonoBehaviour
     [SerializeField] float decreaseSpeed = 0.5f;
     float normalIntensity = 50f;
     float newIntensity = 50f;
+
     [Header("Flicker")]
     [SerializeField] float intensityRange;
     float flickerTimer = 0.3f;
     [SerializeField] float flickerCD = 0.3f;
     bool isDecaying = true;
 
-    
+    private void Awake()
+    {
+        if (playerLight == null)
+        {
+            playerLight = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     void Start()
     {
         lightComp = GetComponent<Light>();
