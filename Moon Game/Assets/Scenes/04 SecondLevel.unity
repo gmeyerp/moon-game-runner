@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  audioMixer: {fileID: 0}
 --- !u!4 &82366216
 Transform:
   m_ObjectHideFlags: 0
@@ -2959,6 +2960,8 @@ MonoBehaviour:
   dashSFX: {fileID: 8300000, guid: bc2be18e7d1afd54783f12b29f379f41, type: 3}
   hitSFX: {fileID: 8300000, guid: a74f0863a681c5249a631c765563a041, type: 3}
   invulnerabilityCD: 1
+  comboTimeLim: 4
+  especialDurationTimer: 5
 --- !u!54 &1613567494
 Rigidbody:
   m_ObjectHideFlags: 0
