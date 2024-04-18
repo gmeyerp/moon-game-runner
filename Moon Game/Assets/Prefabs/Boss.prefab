@@ -14808,9 +14808,11 @@ MonoBehaviour:
   heightPosition: 5
   playerDelta: 15
   floatSpeed: 0.01
-  drainDelay: 1.5
-  attackCD: 0
-  trapsPrefab: []
+  drainEffectTimer: 1.5
+  drainFinishTimer: 1.5
+  trapsEffectTimer: 2.3
+  trapsPrefab:
+  - {fileID: 1459814820418648659, guid: 2c17ec26f26696b4391560121f95c7c8, type: 3}
   hitVFX: {fileID: 0}
   drainVFX: {fileID: 1108726072963703865}
   trapVFX: {fileID: 0}
