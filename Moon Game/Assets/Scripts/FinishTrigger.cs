@@ -26,7 +26,8 @@ public class FinishTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SoundManager.instance.PlaySFX(winSFX);
-            GameManager.instance.SwitchScene("04 SecondLevel");
+            GameManager.instance.PlayerWin();
+
         }
     }
 }
