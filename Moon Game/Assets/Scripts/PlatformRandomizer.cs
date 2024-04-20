@@ -7,9 +7,7 @@ public class PlatformRandomizer : MonoBehaviour
     [SerializeField] Transform[] positions;
     [SerializeField] GameObject[] platforms;
     [SerializeField] GameObject[] instantiatedPlatforms;
-    [SerializeField] GameObject bossPrefab;
     [SerializeField] Player player;
-    bool bossFight;
     int cont = 1;
     // Start is called before the first frame update
     void Start()
@@ -23,13 +21,10 @@ public class PlatformRandomizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!bossFight)
+        if (player.transform.position.x >= positions[cont].position.x)
         {
-            if (player.transform.position.x >= positions[cont].position.x)
-            {
-                SwitchPlatforms();
-            }
-        }
+            SwitchPlatforms();
+        }             
     }
 
     void RandomizeArray()
@@ -47,20 +42,7 @@ public class PlatformRandomizer : MonoBehaviour
     void SwitchPlatforms()
     {
         Destroy(instantiatedPlatforms[cont-1]); //deleta a anterior
-        cont++;
-        if (cont < platforms.Length) //se o contador se manter menor que o maximo ainda ha plataformas para colocar
-        {
-            instantiatedPlatforms[cont] = Instantiate(platforms[cont], positions[cont].position, Quaternion.identity);
-        }
-        else
-        {
-            StartBossFight();
-        }
-    }
-
-    void StartBossFight()
-    {
-        bossFight = true;
-        Instantiate(bossPrefab, positions[positions.Length - 1].position, Quaternion.identity);
+        cont++;        
+        instantiatedPlatforms[cont] = Instantiate(platforms[cont], positions[cont].position, Quaternion.identity);
     }
 }
