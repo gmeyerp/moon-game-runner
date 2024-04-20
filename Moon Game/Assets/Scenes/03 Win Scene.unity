@@ -241,7 +241,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1608906666}
         m_TargetAssemblyTypeName: UIButtons, Assembly-CSharp
         m_MethodName: ReplayGame
         m_Mode: 1
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1608906666}
         m_TargetAssemblyTypeName: UIButtons, Assembly-CSharp
         m_MethodName: ReturnMenu
         m_Mode: 1

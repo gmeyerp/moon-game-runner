@@ -21,13 +21,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         currentScene = SceneManager.GetActiveScene();
-        defineOrientation(currentScene);
+        DefineOrientation(currentScene);
         pauseMenu.SetActive(false);
     }
 
-    void update()
+    void Update()
     {
-        checkInput();
+        CheckInput();
     }
 
     //Stage Progression
@@ -42,9 +42,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void SwitchScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void SwitchScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     //Device Orientation Manager
 
-    private void defineOrientation(Scene scene)
+    private void DefineOrientation(Scene scene)
     {
         if (scene.name == "00 StartScene" || scene.name == "01 FirstLevel" || scene.name == "02 LoseScene" || scene.name == "03 Win Scene")
         {
@@ -58,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     //Cheat Warp to Stage II
 
-    private void checkInput()
+    private void CheckInput()
     {
         if (Input.touchCount == 4)
         {
@@ -68,13 +78,13 @@ public class GameManager : MonoBehaviour
 
     //Pause Menu
 
-    public void pauseGame()
+    public void PauseGame()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public void resumeGame()
+    public void ResumeGame()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
@@ -82,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     //Settings Menu
 
-    public void setVolume (float volume)
+    public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", volume);
     }
