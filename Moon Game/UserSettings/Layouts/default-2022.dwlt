@@ -1106,7 +1106,7 @@ MonoBehaviour:
         m_UserData: 34684
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -1593,7 +1593,6 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-=======
   - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Dell\Documents\Game Design\TI - Runner\moon-game-runner\Moon
