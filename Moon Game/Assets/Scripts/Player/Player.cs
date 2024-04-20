@@ -49,12 +49,23 @@ public class Player : MonoBehaviour
     bool isInvulnerable;
     [SerializeField] float invulnerabilityCD = 1f;
 
+    [Header("Especial")]
+    [SerializeField] float especialDurationTimer;
+    [SerializeField] private int comboNumber;
+    [SerializeField] float especialDuration = 1.0f;
+
+    private float comboTimer = 0f;
+    private bool onEspecial;
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
         animator = GetComponent<Animator>();
         isInvulnerable = false;
+        comboNumber = 0;
+        onEspecial = false;
     }
 
     void Update()
@@ -64,6 +75,7 @@ public class Player : MonoBehaviour
         CheckPosition();
         BaseMovement();
         CheckInput();
+        
 
 
         if (isDashingH)
@@ -82,6 +94,19 @@ public class Player : MonoBehaviour
         }
 
         steps.SetActive(isGrounded);
+
+        if(comboNumber >= 5)
+        {
+            especialDurationTimer = especialDuration;
+            Especial();
+            comboNumber = 0;
+        }
+
+        if(comboTimer >=4)
+        {
+            comboNumber = 0;
+            comboTimer = 0;
+        }
     }
 
     public LightController ReturnLightSource()
@@ -199,6 +224,8 @@ public class Player : MonoBehaviour
         verticalDashTimer += Time.deltaTime;
         dashDurationTimer -= Time.deltaTime;
         invulnerabilityTimer += Time.deltaTime;
+        comboTimer += Time.deltaTime;
+        especialDurationTimer -= Time.deltaTime;
     }
 
     private void DashHorizontal()
@@ -227,9 +254,13 @@ public class Player : MonoBehaviour
 
     public void EndDash()
     {
+        if(onEspecial == false)
+        {
         rb.velocity = Vector3.zero;
         isDashingH = false;
         isDashingV = false;
+        
+        }
 
         //dashVFX.Stop();
     }
@@ -237,6 +268,31 @@ public class Player : MonoBehaviour
     public void ActivateLightVFX()
     {
         collectable.Play();
+    }
+
+    public void comboCounter()
+    {
+        if(onEspecial == false)
+        {
+            comboNumber ++;
+        }
+    }
+
+    private void Especial()
+    {
+
+        if (especialDurationTimer >= 0)
+        {
+            rb.velocity = dashForce * Vector3.right;
+            isInvulnerable = true;
+            onEspecial = true;
+        }
+        else
+        {
+            onEspecial = false;
+            EndDash();
+            isInvulnerable = false;
+        }
     }
 }
 

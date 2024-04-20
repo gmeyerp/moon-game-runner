@@ -47,7 +47,10 @@ public class Enemy : MonoBehaviour
                 case Vulnerability.Horizontal:
                 {
                     if (player.isDashingH)
+                    {
+                        player.comboCounter();
                         Die();
+                    }
                     else
                     player.TakeDamage();                    
                     break;
@@ -56,7 +59,10 @@ public class Enemy : MonoBehaviour
                 case Vulnerability.Vertical:
                 {
                     if (player.isDashingV)
+                    {
+                        player.comboCounter();
                         Die();
+                    }
                     else
                     player.TakeDamage();                    
                     break;
