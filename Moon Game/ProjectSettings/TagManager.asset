@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Especial
   - Attack
+  - Boss
   layers:
   - Default
   - TransparentFX
