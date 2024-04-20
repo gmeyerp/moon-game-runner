@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
+    public static LightController playerLight;
     Light lightComp;
     [SerializeField] float lightAngle;
     [SerializeField] float delta = 20f;
@@ -16,17 +17,31 @@ public class LightController : MonoBehaviour
     [SerializeField] float decreaseSpeed = 0.5f;
     float normalIntensity = 50f;
     float newIntensity = 50f;
+
     [Header("Flicker")]
     [SerializeField] float intensityRange;
     float flickerTimer = 0.3f;
     [SerializeField] float flickerCD = 0.3f;
+    bool isDecaying = true;
 
-    
+    private void Awake()
+    {
+        if (playerLight == null)
+        {
+            playerLight = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     void Start()
     {
         lightComp = GetComponent<Light>();
         lightIncrement = (maxAmount-minAmount)/incrementsNumber; //calculando o valor de cada incremento
-        lightAngle = minAmount + lightIncrement * incrementsNumber/2; //colocando o valor inicial em 50% dos incrementos
+        lightAngle = maxAmount; //colocando o valor inicial no maximo
 
         lightComp.spotAngle = lightAngle; //colocando o angulo da luz no valor inicial
         lightComp.innerSpotAngle = lightAngle - delta;
@@ -35,7 +50,10 @@ public class LightController : MonoBehaviour
 
     void Update()
     {
-        DecreaseLight(decreaseSpeed * Time.deltaTime, false);
+        if (isDecaying)
+        {
+            DecreaseLight(decreaseSpeed * Time.deltaTime, false);
+        }
 
         lightComp.spotAngle = Mathf.Lerp(lightComp.spotAngle, lightAngle, lerpSpeed);
         lightComp.innerSpotAngle = Mathf.Lerp(lightComp.innerSpotAngle, lightAngle - delta, lerpSpeed);
@@ -52,17 +70,30 @@ public class LightController : MonoBehaviour
     public void IncreaseLight()
     {
         lightAngle += lightIncrement;
+
+        if (lightAngle > minAmount + amountToDie) //caso o jogador esteja morrendo, a luz recupera mais intensamente para evitar feedback negativo
+        {
+            lightAngle += lightIncrement;
+        }
+
         if (lightAngle > minAmount + amountToDie)
         {
             newIntensity = normalIntensity;
         }
+
         ///lightComp.spotAngle = lightAngle;
         //lightComp.innerSpotAngle = lightAngle - delta;
     }
 
-    public void IncreaseLight(int amount)
+    public void IncreaseLight(int incrementsAmount)
     {
-        lightAngle += amount * lightIncrement;
+        lightAngle += incrementsAmount * lightIncrement;
+
+        if (lightAngle > minAmount + amountToDie) //caso o jogador esteja morrendo, a luz recupera mais intensamente para evitar feedback negativo
+        {
+            lightAngle += lightIncrement;
+        }
+
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
 
         if (lightAngle > minAmount + amountToDie)
@@ -75,6 +106,7 @@ public class LightController : MonoBehaviour
     {
         if (full)
             lightAngle = maxAmount;
+
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
 
         if (lightAngle > minAmount + amountToDie)
@@ -83,28 +115,28 @@ public class LightController : MonoBehaviour
         }
     }
 
-    public void DecreaseLight(float amount, bool kill)
+    public void DecreaseLight(float decreaseAmount, bool kill)
     {
         if (lightAngle <= minAmount + amountToDie * lightIncrement && kill)
         {
             Player player = GetComponentInParent<Player>();
             player.Die();
         }
-        lightAngle -= amount;
+        lightAngle -= decreaseAmount;
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
         
         //lightComp.spotAngle = lightAngle;
         //lightComp.innerSpotAngle = lightAngle - delta;
     }
 
-    public void DecreaseLight(int amount, bool kill)
+    public void DecreaseLight(int incrementsDecrease, bool kill)
     {
         if (lightAngle <= minAmount + amountToDie * lightIncrement && kill)
         {
             Player player = GetComponentInParent<Player>();
             player.Die();
         }
-        lightAngle -= amount * lightIncrement;
+        lightAngle -= incrementsDecrease * lightIncrement;
         lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
     }
 
@@ -123,5 +155,10 @@ public class LightController : MonoBehaviour
     {        
         newIntensity = normalIntensity - Random.Range(0, intensityRange);  
         flickerTimer = flickerCD;            
+    }
+
+    public void SwitchLightDecay(bool isDecaying)
+    {
+        this.isDecaying = isDecaying;
     }
 }

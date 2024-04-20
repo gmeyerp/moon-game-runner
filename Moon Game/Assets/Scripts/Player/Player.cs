@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
-    [SerializeField] float damagedLight = 40f;
 
     [Header("Dash Skill")]
     public bool isDashingH;
@@ -59,7 +58,7 @@ public class Player : MonoBehaviour
     private bool onEspecial;
 
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
@@ -110,6 +109,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public LightController ReturnLightSource()
+    {
+        return lightController;
+    }
+
     private void CheckInput()
     {
         if (Input.touchCount > 0)
@@ -138,7 +142,7 @@ public class Player : MonoBehaviour
                         horizontalDashTimer = 0f;
                     }                    
                 }
-                else if (endTouchPosition.y >= startTouchPosition.y + swipeDistance || endTouchPosition.y <= startTouchPosition.y - swipeDistance)
+                else if (endTouchPosition.y <= startTouchPosition.y - swipeDistance)
                 {
                     if (verticalDashTimer >= verticalDashCD)
                     {
@@ -192,6 +196,11 @@ public class Player : MonoBehaviour
     public void PlayerIncreseLight()
     {
         lightController.IncreaseLight();
+    }
+
+    public void SwitchLightDecay(bool isDecaying)
+    {
+        lightController.SwitchLightDecay(isDecaying);
     }
 
     private void CheckPosition()
