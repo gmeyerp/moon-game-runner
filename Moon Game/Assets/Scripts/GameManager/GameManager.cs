@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private Scene currentScene;
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] private AudioMixer audioMixer;
 
     void Awake()
     {
@@ -21,16 +18,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         currentScene = SceneManager.GetActiveScene();
-        DefineOrientation(currentScene);
-        pauseMenu.SetActive(false);
+        defineOrientation(currentScene);
     }
 
-    void Update()
+    void update()
     {
-        CheckInput();
+        checkInput();
     }
-
-    //Stage Progression
 
     public void PlayerLose()
     {
@@ -42,19 +36,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    public void SwitchScene(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
-
-    public void SwitchScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-
-    //Device Orientation Manager
-
-    private void DefineOrientation(Scene scene)
+    private void defineOrientation(Scene scene)
     {
         if (scene.name == "00 StartScene" || scene.name == "01 FirstLevel" || scene.name == "02 LoseScene" || scene.name == "03 Win Scene")
         {
@@ -66,34 +48,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Cheat Warp to Stage II
-
-    private void CheckInput()
+    private void checkInput()
     {
         if (Input.touchCount == 4)
         {
             SceneManager.LoadScene(4);
         }
-    }
-
-    //Pause Menu
-
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-    }
-
-    public void ResumeGame()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-    }
-
-    //Settings Menu
-
-    public void SetVolume (float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
     }
 }
