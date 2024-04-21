@@ -238,5 +238,12 @@ public class Player : MonoBehaviour
     {
         collectable.Play();
     }
+
+    public void rotatePlayer()
+    {
+        Quaternion currentRotation = transform.rotation;
+        Quaternion backwardRotation = Quaternion.Euler(0f, 180f, 0f);
+        transform.rotation = currentRotation * backwardRotation;
+    }
 }
 
