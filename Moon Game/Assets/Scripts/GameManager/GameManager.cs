@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private Scene currentScene;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] GameObject pauseButton;
 
     void Awake()
     {
@@ -63,13 +64,16 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        pauseButton.SetActive(false);
         Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        pauseButton.SetActive(true);
         Time.timeScale = 1f;
+
     }
 
     public void SetVolume(float volume)
