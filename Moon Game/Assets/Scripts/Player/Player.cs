@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     float invulnerabilityTimer;    
     bool isInvulnerable;
     [SerializeField] float invulnerabilityCD = 1f;
+    bool isCheating;
 
     void Awake()
     {
@@ -78,8 +79,8 @@ public class Player : MonoBehaviour
         if (invulnerabilityTimer >= invulnerabilityCD)
         {
             isInvulnerable = false;
-            Debug.Log(isInvulnerable);
         }
+        Debug.Log(isCheating);
 
         steps.SetActive(isGrounded);
     }
@@ -136,9 +137,15 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        else if(Input.touchCount == 4)
+
+        if(Input.touchCount == 4)
         {
-            isInvulnerable = !isInvulnerable;
+            Touch lastTouch = Input.GetTouch(3);
+            if (lastTouch.phase == TouchPhase.Ended)
+            {
+                Debug.Log("Invulnerability cheat");
+                isCheating = !isCheating;
+            }
         }
     }
 
@@ -156,7 +163,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (!isInvulnerable)
+        if (!isInvulnerable && !isCheating)
         {
             lightController.DecreaseLight(5, true);
             isInvulnerable = true;

@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour
     [SerializeField] float fallSpeed = 0.15f;
     [SerializeField] int health = 3;
     [SerializeField] float defeatDelay = 2f;
+    [SerializeField] float recoverDistance = 10f;
 
     [Header("Attack")]
     [SerializeField] float drainEffectTimer = 1.5f;
@@ -55,7 +56,7 @@ public class Boss : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, newPos, floatSpeed);
         }
 
-        if (player.transform.position.x - transform.position.x > 5f)
+        if (player.transform.position.x - transform.position.x > recoverDistance)
         {
             Recover();
         }
@@ -132,6 +133,6 @@ public class Boss : MonoBehaviour
     IEnumerator CBossDefeated()
     {
         yield return new WaitForSeconds(defeatDelay);
-        GameManager.instance.PlayerWin();
+        GameManager.instance.BossDefeat();
     }
 }
