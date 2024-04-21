@@ -76,6 +76,8 @@ public class LightController : MonoBehaviour
             lightAngle += lightIncrement;
         }
 
+        lightAngle = Mathf.Clamp(lightAngle, minAmount, maxAmount);
+
         if (lightAngle > minAmount + amountToDie)
         {
             newIntensity = normalIntensity;
