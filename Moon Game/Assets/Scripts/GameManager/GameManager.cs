@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void BossDefeat()
+    {
+        SceneManager.LoadScene(4);
+    }
+
     private void DefineOrientation(Scene scene)
     {
         if (scene.name == "00 StartScene" || scene.name == "01 FirstLevel" || scene.name == "02 LoseScene" || scene.name == "03 Win Scene")
@@ -55,9 +60,13 @@ public class GameManager : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.touchCount == 5)
+        if(Input.touchCount == 5)
         {
-            SceneManager.LoadScene("04 SecondLevel");
+            Touch lastTouch = Input.GetTouch(4);
+            if (lastTouch.phase == TouchPhase.Ended)
+            {
+                SceneManager.LoadScene(4);
+            }
         }
     }
 
