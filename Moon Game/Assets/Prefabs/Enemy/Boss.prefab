@@ -19706,6 +19706,10 @@ MonoBehaviour:
   trapsEffectTimer: 2.5
   trapsPrefab:
   - {fileID: 1459814820418648659, guid: 2c17ec26f26696b4391560121f95c7c8, type: 3}
+  - {fileID: 1459814820418648659, guid: d8818cd395029ac40b67ba6ee9020450, type: 3}
+  - {fileID: 1459814820418648659, guid: 3f5a896298092d34db412507d16431af, type: 3}
+  - {fileID: 1459814820418648659, guid: 5fcc650c870e8dc458c9b16a62dc8ac3, type: 3}
+  - {fileID: 1459814820418648659, guid: 1cdf75bf33440ec4ba5a93a0f8b85557, type: 3}
   hitVFX: {fileID: 1195272242904276333}
   drainVFX: {fileID: 1108726072963703865}
   trapVFX: {fileID: 4943049825517955494}
