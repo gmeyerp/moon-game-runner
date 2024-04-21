@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private Scene currentScene;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] AudioMixer audioMixer;
 
     void Awake()
     {
@@ -18,12 +21,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         currentScene = SceneManager.GetActiveScene();
-        defineOrientation(currentScene);
+        DefineOrientation(currentScene);
+        pauseMenu.SetActive(false);
     }
 
-    void update()
+    void Update()
     {
-        checkInput();
+        CheckInput();
     }
 
     public void PlayerLose()
@@ -36,7 +40,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    private void defineOrientation(Scene scene)
+    private void DefineOrientation(Scene scene)
     {
         if (scene.name == "00 StartScene" || scene.name == "01 FirstLevel" || scene.name == "02 LoseScene" || scene.name == "03 Win Scene")
         {
@@ -48,11 +52,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void checkInput()
+    private void CheckInput()
     {
-        if (Input.touchCount == 4)
+        if (Input.touchCount == 5)
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene("04 SecondLevel");
         }
+    }
+
+    public void PauseGame()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("volume", volume);
     }
 }

@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        else if(Input.touchCount == 5)
+        else if(Input.touchCount == 4)
         {
             isInvulnerable = !isInvulnerable;
         }
