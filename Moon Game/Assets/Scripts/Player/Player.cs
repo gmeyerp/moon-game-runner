@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
-    [SerializeField] float damagedLight = 40f;
 
     [Header("Dash Skill")]
     public bool isDashingH;
@@ -39,6 +38,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject steps;
     [SerializeField] ParticleSystem collectable;
     [SerializeField] ParticleSystem dashFX;
+    [SerializeField] ParticleSystem hitVFX;
 
     [Header("SFX")]
     [SerializeField] AudioClip dashSFX;
@@ -48,12 +48,14 @@ public class Player : MonoBehaviour
     float invulnerabilityTimer;    
     bool isInvulnerable;
     [SerializeField] float invulnerabilityCD = 1f;
+    bool isCheating;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
-        animator = GetComponent<Animator>();  
+        animator = GetComponent<Animator>();
+        isInvulnerable = false;
     }
 
     void Update()
@@ -77,10 +79,15 @@ public class Player : MonoBehaviour
         if (invulnerabilityTimer >= invulnerabilityCD)
         {
             isInvulnerable = false;
-            Debug.Log(isInvulnerable);
         }
+        Debug.Log(isCheating);
 
         steps.SetActive(isGrounded);
+    }
+
+    public LightController ReturnLightSource()
+    {
+        return lightController;
     }
 
     private void CheckInput()
@@ -111,7 +118,7 @@ public class Player : MonoBehaviour
                         horizontalDashTimer = 0f;
                     }                    
                 }
-                else if (endTouchPosition.y >= startTouchPosition.y + swipeDistance || endTouchPosition.y <= startTouchPosition.y - swipeDistance)
+                else if (endTouchPosition.y <= startTouchPosition.y - swipeDistance)
                 {
                     if (verticalDashTimer >= verticalDashCD)
                     {
@@ -130,6 +137,16 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if(Input.touchCount == 4)
+        {
+            Touch lastTouch = Input.GetTouch(3);
+            if (lastTouch.phase == TouchPhase.Ended)
+            {
+                Debug.Log("Invulnerability cheat");
+                isCheating = !isCheating;
+            }
+        }
     }
 
     private void Jump()
@@ -146,15 +163,26 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (!isInvulnerable)
+        if (!isInvulnerable && !isCheating)
         {
-            lightController.DecreaseLight(damagedLight);
+            lightController.DecreaseLight(5, true);
             isInvulnerable = true;
             Debug.Log(isInvulnerable);
             invulnerabilityTimer = 0;
             SoundManager.instance.PlaySFX(hitSFX);
+            hitVFX.Play();
             animator.SetTrigger("TakeDamage");
         }        
+    }
+
+    public void PlayerIncreseLight()
+    {
+        lightController.IncreaseLight();
+    }
+
+    public void SwitchLightDecay(bool isDecaying)
+    {
+        lightController.SwitchLightDecay(isDecaying);
     }
 
     private void CheckPosition()
@@ -167,8 +195,8 @@ public class Player : MonoBehaviour
     {
         if (!isDashingH)
         {
-            Vector3 forawrdMove = transform.right * speed * Time.deltaTime;
-            rb.MovePosition(rb.position + forawrdMove);
+            Vector3 forwardMove = transform.right * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + forwardMove);
         }
     }
 
@@ -216,6 +244,13 @@ public class Player : MonoBehaviour
     public void ActivateLightVFX()
     {
         collectable.Play();
+    }
+
+    public void rotatePlayer()
+    {
+        Quaternion currentRotation = transform.rotation;
+        Quaternion backwardRotation = Quaternion.Euler(0f, 180f, 0f);
+        transform.rotation = currentRotation * backwardRotation;
     }
 }
 
