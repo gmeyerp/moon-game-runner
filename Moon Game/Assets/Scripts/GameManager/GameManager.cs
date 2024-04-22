@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void BossDefeat()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(3);
     }
 
     private void DefineOrientation(Scene scene)
