@@ -19701,6 +19701,7 @@ MonoBehaviour:
   fallSpeed: 0.15
   health: 3
   defeatDelay: 2
+  recoverDistance: 10
   drainEffectTimer: 1.5
   drainFinishTimer: 1.5
   trapsEffectTimer: 2.5
@@ -23710,7 +23711,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minVertexDistance: 0.05
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
@@ -44123,7 +44124,7 @@ PrefabInstance:
     - target: {fileID: 1218983470780150353, guid: 251970e5b51ed5149b8b0c596df83e78,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1218983470780150353, guid: 251970e5b51ed5149b8b0c596df83e78,
         type: 3}
