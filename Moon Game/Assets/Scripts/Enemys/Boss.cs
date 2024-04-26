@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = Player.playerInstance;
         //animator = GetComponent<Animator>();
         LightController.playerLight.SwitchLightDecay(false);
         DrainLight();

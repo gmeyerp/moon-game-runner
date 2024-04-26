@@ -10,6 +10,6 @@ public class GroundMovement : MonoBehaviour
     void Update()
     {
         if (player.position.x - transform.position.x >= addToPosition)
-        transform.position = new Vector3(player.position.x + addToPosition, transform.position.y);
+        transform.position = new Vector3(transform.position.x + 2 * addToPosition, transform.position.y);
     }
 }

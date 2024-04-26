@@ -22,8 +22,8 @@ public class Wall : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
 		{
-            player = other.GetComponent<Player>();
-            player.rotatePlayer();
+            player = Player.playerInstance;
+            player.RotatePlayer();
         }        
     }
 }

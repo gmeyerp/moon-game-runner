@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    public static Player playerInstance;
+    public static Vector3 playerPos;
     public int enemyScore;
     private Rigidbody rb;
     Animator animator;
@@ -52,6 +55,15 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        if (playerInstance == null)
+        {
+            playerInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
         animator = GetComponent<Animator>();
@@ -60,6 +72,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        playerPos = transform.position;
         UpdateTimer();
 
         CheckPosition();
@@ -175,7 +188,7 @@ public class Player : MonoBehaviour
         }        
     }
 
-    public void PlayerIncreseLight()
+    public void PlayerIncreaseLight()
     {
         lightController.IncreaseLight();
     }
@@ -195,7 +208,7 @@ public class Player : MonoBehaviour
     {
         if (!isDashingH)
         {
-            Vector3 forwardMove = transform.right * speed * Time.deltaTime;
+            Vector3 forwardMove = faceDirection * transform.right * speed * Time.deltaTime;
             rb.MovePosition(rb.position + forwardMove);
         }
     }
@@ -212,7 +225,7 @@ public class Player : MonoBehaviour
     {
         if (dashDurationTimer >= 0)
         {
-            rb.velocity = dashForce * Vector3.right;
+            rb.velocity = faceDirection * dashForce * Vector3.right;
         }
         else
         {
@@ -246,11 +259,9 @@ public class Player : MonoBehaviour
         collectable.Play();
     }
 
-    public void rotatePlayer()
+    public void RotatePlayer()
     {
-        Quaternion currentRotation = transform.rotation;
-        Quaternion backwardRotation = Quaternion.Euler(0f, 180f, 0f);
-        transform.rotation = currentRotation * backwardRotation;
+        faceDirection *= -1;
     }
 }
 

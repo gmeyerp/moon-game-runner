@@ -17,6 +17,7 @@ public class LightController : MonoBehaviour
     [SerializeField] float decreaseSpeed = 0.5f;
     float normalIntensity = 50f;
     float newIntensity = 50f;
+    Player player;
 
     [Header("Flicker")]
     [SerializeField] float intensityRange;
@@ -34,6 +35,8 @@ public class LightController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        player = Player.playerInstance;
     }
 
 
@@ -121,7 +124,6 @@ public class LightController : MonoBehaviour
     {
         if (lightAngle <= minAmount + amountToDie * lightIncrement && kill)
         {
-            Player player = GetComponentInParent<Player>();
             player.Die();
         }
         lightAngle -= decreaseAmount;
@@ -135,7 +137,6 @@ public class LightController : MonoBehaviour
     {
         if (lightAngle <= minAmount + amountToDie * lightIncrement && kill)
         {
-            Player player = GetComponentInParent<Player>();
             player.Die();
         }
         lightAngle -= incrementsDecrease * lightIncrement;
@@ -146,7 +147,6 @@ public class LightController : MonoBehaviour
     {
         if (lightAngle <= minAmount + amountToDie * lightIncrement && kill)
         {
-            Player player = GetComponentInParent<Player>();
             player.Die();
         }
         lightAngle -= lightIncrement;

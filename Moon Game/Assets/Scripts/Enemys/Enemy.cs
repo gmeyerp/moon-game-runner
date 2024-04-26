@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         GameObject vfxObject = Instantiate(deathVFX, transform.position, deathVFX.transform.rotation);
-        player.PlayerIncreseLight();
+        player.PlayerIncreaseLight();
         //Debug.Log(vfxObject.name);
         Destroy(gameObject);        
     }
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
 		{
-            player = other.GetComponent<Player>();            
+            player = Player.playerInstance;            
             switch (vulnerability)
             {
                 case Vulnerability.Horizontal:
