@@ -12,7 +12,7 @@ public class MoonColletable : MonoBehaviour
 
             Player player = other.GetComponent<Player>();
             player.ActivateLightVFX();
-            player.PlayerIncreseLight();
+            player.PlayerIncreaseLight();
 
             Destroy(gameObject);
             SoundManager.instance.PlaySFX(collectSFX);
