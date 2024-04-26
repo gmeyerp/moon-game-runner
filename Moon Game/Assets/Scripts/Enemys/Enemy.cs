@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
 		{
-            player = other.GetComponent<Player>();            
+            player = Player.playerInstance;            
             switch (vulnerability)
             {
                 case Vulnerability.Horizontal:

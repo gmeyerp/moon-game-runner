@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlatformRandomizer : MonoBehaviour
 {
+    enum lvlDirection { Horizontal, Vertical }
     [SerializeField] Transform[] positions;
     [SerializeField] GameObject[] platforms;
     [SerializeField] GameObject[] instantiatedPlatforms;
     [SerializeField] GameObject bossPrefab;
     [SerializeField] Player player;
+    [SerializeField] lvlDirection direction;
+    [SerializeField] float bossDelay;
     bool bossFight;
     int cont = 1;
     // Start is called before the first frame update
@@ -25,7 +28,11 @@ public class PlatformRandomizer : MonoBehaviour
     {
         if (!bossFight)
         {
-            if (player.transform.position.x >= positions[cont].position.x)
+            if (player.transform.position.x >= positions[cont].position.x && direction == lvlDirection.Horizontal)
+            {
+                SwitchPlatforms();
+            }
+            else if (player.transform.position.y >= positions[cont].position.x && direction == lvlDirection.Vertical)
             {
                 SwitchPlatforms();
             }
@@ -61,6 +68,12 @@ public class PlatformRandomizer : MonoBehaviour
     void StartBossFight()
     {
         bossFight = true;
+        StartCoroutine(SummonBoss());
+    }
+
+    IEnumerator SummonBoss()
+    {
+        yield return new WaitForSeconds(bossDelay);
         Instantiate(bossPrefab, positions[positions.Length - 1].position, Quaternion.identity);
     }
 }

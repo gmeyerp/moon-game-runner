@@ -9,7 +9,7 @@ public class DrainVFX : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = Player.playerInstance;
     }
     void Update()
     {
