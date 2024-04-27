@@ -71,7 +71,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.122
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -103,11 +103,11 @@ Material:
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 0.39607844}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.49019608}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 0.49019608}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.135, g: 0.056037735, b: 0.022924528, a: 0.8666667}
+    - _UnderlayColor: {r: 1, g: 0, b: 0.86026716, a: 0.8666667}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
