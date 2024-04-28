@@ -46,4 +46,16 @@ public class SoundManager : MonoBehaviour
         if (sound != null)
         sfx.PlayOneShot(sound, volume);
     }
+
+    public void ChangeBGMVolume(float volume)
+    {
+        bgm.volume = volume;
+    }
+
+    public void ChangeSFXVolume(float volume)
+    {
+        sfx.volume = volume;
+    }
+
+
 }

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIButtons : MonoBehaviour
 {
+    [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject configPanel;
     private void ButtonClicked()
     {
         SoundManager.instance.PlaySFX(0);
@@ -31,5 +34,33 @@ public class UIButtons : MonoBehaviour
     {
         Debug.Log("Fechar programa");
         Application.Quit();
+    }
+    
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseButton.SetActive(false);
+        pausePanel.SetActive(true);
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1.0f;
+        pauseButton.SetActive(true);
+        pausePanel.SetActive(false);
+
+        //implementar save de configuracoes
+    }
+
+    public void OpenConfig()
+    {
+        configPanel.SetActive(true);
+    }
+
+    public void CloseConfig()
+    {
+        configPanel.SetActive(false);
+        
+        //implementar save de configuracoes
     }
 }

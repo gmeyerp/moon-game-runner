@@ -375,6 +375,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu (Background)
       objectReference: {fileID: 0}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1608906666}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIButtons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -832,6 +852,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Restart (Background)
       objectReference: {fileID: 0}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1608906666}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReplayGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIButtons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -959,6 +999,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a9e5adcaa61b04fa6dc48941d6dfc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  pauseButton: {fileID: 0}
+  configPanel: {fileID: 0}
 --- !u!1 &1789271710
 GameObject:
   m_ObjectHideFlags: 0
