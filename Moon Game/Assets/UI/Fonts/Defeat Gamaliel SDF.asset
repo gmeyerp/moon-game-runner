@@ -107,7 +107,7 @@ Material:
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.9911022, g: 0, b: 0.4072403, a: 1}
+    - _UnderlayColor: {r: 0.28235295, g: 0, b: 1, a: 0.8666667}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -119,11 +119,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Title Gamaliel SDF
+  m_Name: Defeat Gamaliel SDF
   m_EditorClassIdentifier: 
-  hashCode: -257491337
+  hashCode: 395486496
   material: {fileID: -693170960748573387}
-  materialHashCode: -811623817
+  materialHashCode: -566861056
   m_Version: 1.1.0
   m_SourceFontFileGUID: e25ad9835e5d58e4795c3c524b276618
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: e25ad9835e5d58e4795c3c524b276618,
