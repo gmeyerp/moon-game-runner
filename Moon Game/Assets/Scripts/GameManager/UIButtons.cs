@@ -8,6 +8,7 @@ public class UIButtons : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject configPanel;
+    public static bool ui_is_Open;
     private void ButtonClicked()
     {
         SoundManager.instance.PlaySFX(0);
@@ -41,6 +42,7 @@ public class UIButtons : MonoBehaviour
         Time.timeScale = 0;
         pauseButton.SetActive(false);
         pausePanel.SetActive(true);
+        UIButtons.ui_is_Open = true;
     }
 
     public void UnpauseGame()
@@ -48,7 +50,7 @@ public class UIButtons : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
-
+        UIButtons.ui_is_Open = false;
         //implementar save de configuracoes
     }
 
