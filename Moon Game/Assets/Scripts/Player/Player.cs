@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
 
     private void CheckInput()
     {
+        if (UIButtons.ui_is_Open) return;
         if (Input.touchCount > 0)
         {
             Touch firstTouch = Input.GetTouch(0);
