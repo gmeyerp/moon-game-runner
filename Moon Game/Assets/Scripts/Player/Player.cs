@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        SoundManager.instance.PlaySFX(hitSFX);
+        //SoundManager.instance.PlaySFX(hitSFX);
         GameManager.instance.PlayerLose();
     }
 

@@ -58,6 +58,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 69f6d9864467de6408e62a620a4ea061,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8ac9dd00dfb0a44790f58999fc3de64, type: 2}
     - target: {fileID: 919132149155446097, guid: 69f6d9864467de6408e62a620a4ea061,
         type: 3}
       propertyPath: m_Name
@@ -102,5 +107,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12.6490135, y: 0.72902584, z: 5.0657144}
-  m_Center: {x: -0.13340092, y: -0.41594028, z: -0.032857418}
+  m_Size: {x: 10.026808, y: 0.6544118, z: 2}
+  m_Center: {x: 0, y: -0.2517215, z: 0}
