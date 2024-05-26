@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerLose()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void PlayerWin()
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void BossDefeat()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 
     private void CheckInput()
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             Touch lastTouch = Input.GetTouch(4);
             if (lastTouch.phase == TouchPhase.Ended)
             {
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(2);
             }
         }
     }
