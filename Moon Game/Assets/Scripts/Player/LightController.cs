@@ -35,13 +35,12 @@ public class LightController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        player = Player.playerInstance;
     }
 
 
     void Start()
     {
+        player = Player.playerInstance;
         lightComp = GetComponent<Light>();
         lightIncrement = (maxAmount-minAmount)/incrementsNumber; //calculando o valor de cada incremento
         lightAngle = maxAmount; //colocando o valor inicial no maximo

@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -369,9 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c767689278d176419ab146646a2e446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 908604798}
-  audioMixer: {fileID: 0}
-  pauseButton: {fileID: 2067690954}
 --- !u!4 &108024235
 Transform:
   m_ObjectHideFlags: 0
@@ -3131,6 +3128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a9e5adcaa61b04fa6dc48941d6dfc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  pauseButton: {fileID: 0}
+  configPanel: {fileID: 0}
 --- !u!114 &1160031752
 MonoBehaviour:
   m_ObjectHideFlags: 0
