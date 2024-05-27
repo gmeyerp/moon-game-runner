@@ -27,13 +27,6 @@ public class SoundManager : MonoBehaviour
         bgm.volume = save.bgmVolume;
     }
 
-    private void OnEnable()
-    {
-        save.Load();
-        sfx.volume = save.sfxVolume;
-        bgm.volume = save.bgmVolume;
-    }
-
     public void ChangeBGM(AudioClip music)
     {
         bgm.clip = music;

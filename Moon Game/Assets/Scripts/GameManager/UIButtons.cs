@@ -45,6 +45,7 @@ public class UIButtons : MonoBehaviour
         pauseButton.SetActive(false);
         pausePanel.SetActive(true);
         UIButtons.ui_is_Open = true;
+        ButtonClicked();
     }
 
     public void UnpauseGame()
@@ -53,28 +54,33 @@ public class UIButtons : MonoBehaviour
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
         UIButtons.ui_is_Open = false;
+        ButtonClicked();
         //implementar save de configuracoes
     }
 
     public void OpenConfig()
     {
         configPanel.SetActive(true);
+        ButtonClicked();
     }
 
     public void CloseConfig()
     {
         configPanel.SetActive(false);
-        
+        ButtonClicked();
+
         //implementar save de configuracoes
     }
 
     public void SwitchCreditsPanel()
     {
         creditsPanel.SetActive(!creditsPanel.activeSelf);
+        ButtonClicked();
     }
 
     public void SwitchInstructionsPanel()
     {
         instructionPanel.SetActive(!instructionPanel.activeSelf);
+        ButtonClicked();
     }
 }

@@ -1261,7 +1261,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5135566020876445234}
         m_TargetAssemblyTypeName: AudioSlider, Assembly-CSharp
-        m_MethodName: BGMChange
+        m_MethodName: SFXChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
