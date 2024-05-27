@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource bgm;
     [SerializeField] AudioSource sfx;
     [SerializeField] AudioClip[] globalSounds;
+    SaveManagement save;
 
     public static SoundManager instance;
     // Start is called before the first frame update
@@ -19,6 +20,11 @@ public class SoundManager : MonoBehaviour
         Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+
+        save = new SaveManagement();
+        save.Load();
+        sfx.volume = save.sfxVolume;
+        bgm.volume = save.bgmVolume;
     }
 
     public void ChangeBGM(AudioClip music)
@@ -57,5 +63,26 @@ public class SoundManager : MonoBehaviour
         sfx.volume = volume;
     }
 
+    private void OnDestroy()
+    {
+        UpdateSave();
+    }
+
+    public void UpdateSave()
+    {
+        save.sfxVolume = sfx.volume;
+        save.bgmVolume = bgm.volume;
+        save.Save();
+    }
+
+    public float GetSFXVolume()
+    {
+        return sfx.volume;
+    }
+
+    public float GetBGMVolume()
+    {
+        return bgm.volume;
+    }
 
 }

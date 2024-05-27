@@ -1,0 +1,4 @@
+{
+    "sfxVolume": 1.0,
+    "bgmVolume": 1.0
+}

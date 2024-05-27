@@ -8,6 +8,9 @@ public class UIButtons : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject configPanel;
+    [SerializeField] GameObject instructionPanel;
+    [SerializeField] GameObject creditsPanel;
+    [SerializeField] GameObject[] tutorial;
     public static bool ui_is_Open;
     private void ButtonClicked()
     {
@@ -43,6 +46,7 @@ public class UIButtons : MonoBehaviour
         pauseButton.SetActive(false);
         pausePanel.SetActive(true);
         UIButtons.ui_is_Open = true;
+        ButtonClicked();
     }
 
     public void UnpauseGame()
@@ -51,18 +55,38 @@ public class UIButtons : MonoBehaviour
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
         UIButtons.ui_is_Open = false;
-        //implementar save de configuracoes
+        ButtonClicked();
     }
 
     public void OpenConfig()
     {
         configPanel.SetActive(true);
+        ButtonClicked();
     }
 
     public void CloseConfig()
     {
         configPanel.SetActive(false);
-        
-        //implementar save de configuracoes
+        ButtonClicked();
+    }
+
+    public void SwitchCreditsPanel()
+    {
+        creditsPanel.SetActive(!creditsPanel.activeSelf);
+        ButtonClicked();
+    }
+
+    public void SwitchInstructionsPanel()
+    {
+        instructionPanel.SetActive(!instructionPanel.activeSelf);
+        ButtonClicked();
+    }
+
+    public void MoreTutorialInfo()
+    {
+        foreach(GameObject info in tutorial)
+        {
+            info.SetActive(!info.activeSelf);
+        }
     }
 }
