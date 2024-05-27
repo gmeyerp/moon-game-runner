@@ -10,6 +10,7 @@ public class UIButtons : MonoBehaviour
     [SerializeField] GameObject configPanel;
     [SerializeField] GameObject instructionPanel;
     [SerializeField] GameObject creditsPanel;
+    [SerializeField] GameObject[] tutorial;
     public static bool ui_is_Open;
     private void ButtonClicked()
     {
@@ -55,7 +56,6 @@ public class UIButtons : MonoBehaviour
         pausePanel.SetActive(false);
         UIButtons.ui_is_Open = false;
         ButtonClicked();
-        //implementar save de configuracoes
     }
 
     public void OpenConfig()
@@ -68,8 +68,6 @@ public class UIButtons : MonoBehaviour
     {
         configPanel.SetActive(false);
         ButtonClicked();
-
-        //implementar save de configuracoes
     }
 
     public void SwitchCreditsPanel()
@@ -82,5 +80,13 @@ public class UIButtons : MonoBehaviour
     {
         instructionPanel.SetActive(!instructionPanel.activeSelf);
         ButtonClicked();
+    }
+
+    public void MoreTutorialInfo()
+    {
+        foreach(GameObject info in tutorial)
+        {
+            info.SetActive(!info.activeSelf);
+        }
     }
 }
