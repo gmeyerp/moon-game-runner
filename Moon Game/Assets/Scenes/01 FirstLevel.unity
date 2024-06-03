@@ -470,6 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2079483557}
   addToPosition: 50
+  isHorizontal: 1
 --- !u!1 &189498886
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2079483557}
   addToPosition: 50
+  isHorizontal: 1
 --- !u!1 &336027457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,7 +3623,7 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 2079483559}
   direction: 0
-  bossDelay: 0
+  bossDelay: 2
 --- !u!4 &1756067722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3601415639088543589, guid: ba4505475aeed244b8b7600e1c487835,

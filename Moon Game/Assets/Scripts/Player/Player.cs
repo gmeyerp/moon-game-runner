@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
+    [SerializeField] bool isHorizontal = true;
 
     [Header("Dash Skill")]
     public bool isDashingH;
@@ -123,6 +124,17 @@ public class Player : MonoBehaviour
                 {
                     if (horizontalDashTimer >= horizontalDashCD)
                     {
+                        if (!isHorizontal)
+                        {
+                            if (faceDirection > 0 && endTouchPosition.x <= startTouchPosition.x - swipeDistance)
+                            {
+                                RotatePlayer();
+                            }
+                            else if (faceDirection < 0 && endTouchPosition.x >= startTouchPosition.x + swipeDistance)
+                            {
+                                RotatePlayer();
+                            }
+                        }
                         dashFX.Play();
                         SoundManager.instance.PlaySFX(dashSFX);                        
 
@@ -171,7 +183,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        //SoundManager.instance.PlaySFX(hitSFX);
+        SoundManager.instance.PlaySFX(hitSFX);
         GameManager.instance.PlayerLose();
     }
 
