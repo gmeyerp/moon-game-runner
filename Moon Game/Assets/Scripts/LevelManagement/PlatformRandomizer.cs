@@ -32,7 +32,7 @@ public class PlatformRandomizer : MonoBehaviour
             {
                 SwitchPlatforms();
             }
-            else if (player.transform.position.y >= positions[cont].position.x && direction == lvlDirection.Vertical)
+            else if (player.transform.position.y >= positions[cont].position.y && direction == lvlDirection.Vertical)
             {
                 SwitchPlatforms();
             }
