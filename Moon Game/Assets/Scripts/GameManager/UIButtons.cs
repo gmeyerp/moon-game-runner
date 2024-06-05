@@ -54,8 +54,14 @@ public class UIButtons : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
+        StartCoroutine(IUnpauseDelay());
         UIButtons.ui_is_Open = false;
         ButtonClicked();
+    }
+
+    IEnumerator IUnpauseDelay()
+    {
+        yield return new WaitForEndOfFrame();
     }
 
     public void OpenConfig()

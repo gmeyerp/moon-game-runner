@@ -41,7 +41,7 @@ public class PlatformRandomizer : MonoBehaviour
 
     void RandomizeArray()
     {
-        int n = platforms.Length;
+        int n = platforms.Length - 1;
         while (n > 1) 
         {
             int k = Random.Range(1, n--); //comeca em 1 para nao alterar a base
