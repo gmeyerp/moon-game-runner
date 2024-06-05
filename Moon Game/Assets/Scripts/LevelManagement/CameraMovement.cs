@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public bool isHorizontal;
+    public bool isVertical;
     [SerializeField] float offset = 5;
+    [SerializeField] float height = 2;
+    [SerializeField] float lerpSpeed = 0.5f;
     [SerializeField] Transform player;
+    public static Transform finalFruit;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +19,16 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (isHorizontal)
+        float x = player.position.x + offset * Player.playerInstance.faceDirection;
+        float y = transform.position.y;
+        if (isVertical && player.position.y > transform.position.y + height)
+            y = player.position.y + height;
+        float z = transform.position.z;
+        Vector3 newPos = new Vector3(x, y, z);
+        if (GameManager.instance.gameOver && finalFruit != null)
         {
-            transform.position = new Vector3 (player.position.x + offset, transform.position.y, transform.position.z);
+            newPos = new Vector3(finalFruit.position.x, finalFruit.position.y, transform.position.z);
         }
-        else if (player.position.y > transform.position.y)
-        {
-            transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
-        }
+        transform.position = Vector3.Lerp(transform.position, newPos, lerpSpeed);
     }
 }

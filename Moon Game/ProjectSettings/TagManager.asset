@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Especial
   - Attack
+  - Boss
+  - PauseCanvas
   layers:
   - Default
   - TransparentFX

@@ -32,7 +32,7 @@ public class PlatformRandomizer : MonoBehaviour
             {
                 SwitchPlatforms();
             }
-            else if (player.transform.position.y >= positions[cont].position.x && direction == lvlDirection.Vertical)
+            else if (player.transform.position.y >= positions[cont].position.y && direction == lvlDirection.Vertical)
             {
                 SwitchPlatforms();
             }
@@ -41,7 +41,7 @@ public class PlatformRandomizer : MonoBehaviour
 
     void RandomizeArray()
     {
-        int n = platforms.Length;
+        int n = platforms.Length - 1;
         while (n > 1) 
         {
             int k = Random.Range(1, n--); //comeca em 1 para nao alterar a base
@@ -58,22 +58,10 @@ public class PlatformRandomizer : MonoBehaviour
         if (cont < platforms.Length) //se o contador se manter menor que o maximo ainda ha plataformas para colocar
         {
             instantiatedPlatforms[cont] = Instantiate(platforms[cont], positions[cont].position, Quaternion.identity);
+            if (cont == platforms.Length - 1)
+            {
+                bossFight = true;
+            }
         }
-        else
-        {
-            StartBossFight();
-        }
-    }
-
-    void StartBossFight()
-    {
-        bossFight = true;
-        StartCoroutine(SummonBoss());
-    }
-
-    IEnumerator SummonBoss()
-    {
-        yield return new WaitForSeconds(bossDelay);
-        Instantiate(bossPrefab, positions[positions.Length - 1].position, Quaternion.identity);
     }
 }

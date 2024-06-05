@@ -18,6 +18,7 @@ public class UIButtons : MonoBehaviour
     }
     public void StartGame()
     {
+        GameManager.instance.gameOver = false;
         SceneManager.LoadScene(1);
         ButtonClicked();
     }
@@ -25,12 +26,14 @@ public class UIButtons : MonoBehaviour
     public void ReturnMenu()
     {
         SceneManager.LoadScene(0);
+        GameManager.instance.gameOver = false;
         ButtonClicked();
     }
 
     public void ReplayGame() //depois tem a opcao de colocar um contador de fases
     {
         SceneManager.LoadScene(1);
+        GameManager.instance.gameOver = false;
         ButtonClicked();
     }
 
@@ -54,8 +57,14 @@ public class UIButtons : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
-        UIButtons.ui_is_Open = false;
+        StartCoroutine(IUnpauseDelay());
         ButtonClicked();
+    }
+
+    IEnumerator IUnpauseDelay()
+    {
+        yield return new WaitForEndOfFrame();
+        UIButtons.ui_is_Open = false;
     }
 
     public void OpenConfig()
