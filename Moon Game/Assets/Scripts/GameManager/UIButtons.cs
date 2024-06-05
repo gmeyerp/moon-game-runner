@@ -18,21 +18,22 @@ public class UIButtons : MonoBehaviour
     }
     public void StartGame()
     {
+        GameManager.instance.gameOver = false;
         SceneManager.LoadScene(1);
         ButtonClicked();
     }
 
     public void ReturnMenu()
     {
-        Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene(0);
+        GameManager.instance.gameOver = false;
         ButtonClicked();
     }
 
     public void ReplayGame() //depois tem a opcao de colocar um contador de fases
     {
-        Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene(1);
+        GameManager.instance.gameOver = false;
         ButtonClicked();
     }
 

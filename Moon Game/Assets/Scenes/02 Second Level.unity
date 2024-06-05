@@ -1940,10 +1940,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1911599578680608783, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_TagString
+      value: PauseCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 2531626421797626551, guid: 24b9382d9fe1164419e5423e55e668b7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -67.4209
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1481900745}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReplayGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIButtons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5073395573067005231, guid: 24b9382d9fe1164419e5423e55e668b7,
         type: 3}
@@ -1960,6 +1985,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24b9382d9fe1164419e5423e55e668b7, type: 3}
+--- !u!114 &1481900745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4073624737779936789, guid: 24b9382d9fe1164419e5423e55e668b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1481900744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a9e5adcaa61b04fa6dc48941d6dfc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1488837765
 GameObject:
   m_ObjectHideFlags: 0

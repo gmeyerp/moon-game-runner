@@ -3254,11 +3254,43 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6982589370450207373}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReplayGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIButtons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24b9382d9fe1164419e5423e55e668b7, type: 3}
+--- !u!114 &6982589370450207373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4073624737779936789, guid: 24b9382d9fe1164419e5423e55e668b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6982589370450207372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a9e5adcaa61b04fa6dc48941d6dfc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9016880520169123585
 PrefabInstance:
   m_ObjectHideFlags: 0
