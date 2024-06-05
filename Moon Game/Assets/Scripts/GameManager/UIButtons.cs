@@ -19,12 +19,14 @@ public class UIButtons : MonoBehaviour
     public void StartGame()
     {
         GameManager.instance.gameOver = false;
+        GameManager.instance.SetCurrentScene(1);
         SceneManager.LoadScene(1);
         ButtonClicked();
     }
 
     public void ReturnMenu()
     {
+        GameManager.instance.SetCurrentScene(0);
         SceneManager.LoadScene(0);
         SoundManager.instance.ChangeBGM(0);
         GameManager.instance.gameOver = false;
@@ -33,8 +35,8 @@ public class UIButtons : MonoBehaviour
 
     public void ReplayGame() //depois tem a opcao de colocar um contador de fases
     {
-        SceneManager.LoadScene(GameManager.instance.GetCurrentScene().buildIndex);        
-        SoundManager.instance.ChangeBGM(GameManager.instance.GetCurrentScene().buildIndex);
+        SceneManager.LoadScene(GameManager.instance.GetCurrentScene());        
+        SoundManager.instance.ChangeBGM(GameManager.instance.GetCurrentScene());
         GameManager.instance.gameOver = false;
         ButtonClicked();
     }

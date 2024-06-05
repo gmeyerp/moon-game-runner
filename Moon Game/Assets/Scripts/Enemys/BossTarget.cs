@@ -14,7 +14,7 @@ public class BossTarget : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             LightController.playerLight.IncreaseLight();
-            Instantiate(collectVFX, transform.position, Quaternion.identity);
+            GameObject vfx = Instantiate(collectVFX, transform.position, collectVFX.transform.rotation);
             SoundManager.instance.PlaySFX(collectSound);
             boss = FindObjectOfType<Boss>();
             boss.Fall();

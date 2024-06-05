@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private Scene currentScene;
+    private int currentScene;
     public bool gameOver;
 
     void Awake()
@@ -17,11 +17,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        currentScene = SceneManager.GetActiveScene();        
     }
 
     void Update()
@@ -42,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void BossDefeat()
     {
+        currentScene = 2;
         SceneManager.LoadScene(2);
         SoundManager.instance.ChangeBGM(2);
     }
@@ -59,8 +55,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Scene GetCurrentScene()
+    public int GetCurrentScene()
     {
         return currentScene;
+    }
+
+    public void SetCurrentScene(int scene)
+    {
+        currentScene = scene;
     }
 }
