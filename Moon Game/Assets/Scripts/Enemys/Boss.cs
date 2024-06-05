@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
     Player player;
     Animator animator;
     bool isDamaged;
+    bool isDefeated;
 
     [Header("Movement")]
     [SerializeField] float heightPosition = 5f;
@@ -19,6 +20,7 @@ public class Boss : MonoBehaviour
     [SerializeField] int health = 3;
     [SerializeField] float defeatDelay = 2f;
     [SerializeField] float recoverDistance = 10f;
+    [SerializeField] GameObject[] healthIcon;
 
     [Header("Attack")]
     [SerializeField] float drainEffectTimer = 1.5f;
@@ -56,7 +58,7 @@ public class Boss : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, newPos, floatSpeed);
         }
 
-        if (player.transform.position.x - transform.position.x > recoverDistance)
+        if (player.transform.position.x - transform.position.x > recoverDistance && !isDefeated)
         {
             Recover();
         }
@@ -113,6 +115,7 @@ public class Boss : MonoBehaviour
     {
         hitVFX.Play();
         health --;
+        healthIcon[health].SetActive(false);
         SoundManager.instance.PlaySFX(damagedClip);
         if (health <= 0)
         {
@@ -132,6 +135,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator CBossDefeated()
     {
+        isDefeated = true;
         yield return new WaitForSeconds(defeatDelay);
         GameManager.instance.BossDefeat();
     }

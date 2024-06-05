@@ -407,6 +407,7 @@ MonoBehaviour:
   configPanel: {fileID: 0}
   instructionPanel: {fileID: 0}
   creditsPanel: {fileID: 0}
+  tutorial: []
 --- !u!1 &3393086634165651252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,7 +1103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 69a7b8514e5f03a479c79c8adf78ca6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3dcaab41ecd63294ba79170f2bf90de8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1351,7 +1352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 69a7b8514e5f03a479c79c8adf78ca6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 780ad368dd773c04caa45c07509d46b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1553,7 +1554,7 @@ PrefabInstance:
     - target: {fileID: 6905882751171612547, guid: 717f1a12142ef9943bcc27c728aa20fd,
         type: 3}
       propertyPath: m_fontSize
-      value: 89.7
+      value: 69.15
       objectReference: {fileID: 0}
     - target: {fileID: 7025794410223066039, guid: 717f1a12142ef9943bcc27c728aa20fd,
         type: 3}
@@ -1722,7 +1723,7 @@ PrefabInstance:
     - target: {fileID: 6905882751171612547, guid: 717f1a12142ef9943bcc27c728aa20fd,
         type: 3}
       propertyPath: m_fontSize
-      value: 89.7
+      value: 69.15
       objectReference: {fileID: 0}
     - target: {fileID: 7025794410223066039, guid: 717f1a12142ef9943bcc27c728aa20fd,
         type: 3}

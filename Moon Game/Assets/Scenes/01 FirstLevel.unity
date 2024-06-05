@@ -3149,6 +3149,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415429900337067843, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 690714766397072599, guid: 24b9382d9fe1164419e5423e55e668b7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3249,10 +3254,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1376410206978063615, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797709533877492865, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1911599578680608783, guid: 24b9382d9fe1164419e5423e55e668b7,
         type: 3}
       propertyPath: m_Name
       value: PauseCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638016379271130069, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4857884500118376657, guid: 24b9382d9fe1164419e5423e55e668b7,
         type: 3}
@@ -3273,6 +3293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591417514872991853, guid: 24b9382d9fe1164419e5423e55e668b7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

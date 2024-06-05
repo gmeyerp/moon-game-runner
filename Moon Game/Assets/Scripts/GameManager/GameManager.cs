@@ -17,8 +17,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+    }
 
-        currentScene = SceneManager.GetActiveScene();
+    private void Start()
+    {
+        currentScene = SceneManager.GetActiveScene();        
     }
 
     void Update()
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
     public void PlayerLose()
     {
         SceneManager.LoadScene(3);
+        SoundManager.instance.ChangeBGM(3);
     }
 
     public void PlayerWin()
@@ -39,6 +43,7 @@ public class GameManager : MonoBehaviour
     public void BossDefeat()
     {
         SceneManager.LoadScene(2);
+        SoundManager.instance.ChangeBGM(2);
     }
 
     private void CheckInput()
@@ -49,7 +54,13 @@ public class GameManager : MonoBehaviour
             if (lastTouch.phase == TouchPhase.Ended)
             {
                 SceneManager.LoadScene(2);
+                SoundManager.instance.ChangeBGM(2);
             }
         }
+    }
+
+    public Scene GetCurrentScene()
+    {
+        return currentScene;
     }
 }
