@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        gameOver = false;
+    }
+
     void Update()
     {
         CheckInput();
@@ -26,8 +31,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayerLose()
     {
-        SceneManager.LoadScene(3);
         SoundManager.instance.ChangeBGM(3);
+        SceneManager.LoadScene(3);
     }
 
     public void PlayerWin()
@@ -38,8 +43,8 @@ public class GameManager : MonoBehaviour
     public void BossDefeat()
     {
         currentScene = 2;
-        SceneManager.LoadScene(2);
         SoundManager.instance.ChangeBGM(2);
+        SceneManager.LoadScene(2);
     }
 
     private void CheckInput()
@@ -49,8 +54,8 @@ public class GameManager : MonoBehaviour
             Touch lastTouch = Input.GetTouch(4);
             if (lastTouch.phase == TouchPhase.Ended)
             {
-                SceneManager.LoadScene(2);
                 SoundManager.instance.ChangeBGM(2);
+                SceneManager.LoadScene(2);
             }
         }
     }
