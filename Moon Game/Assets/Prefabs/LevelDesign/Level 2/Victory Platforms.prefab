@@ -5103,6 +5103,7 @@ GameObject:
   - component: {fileID: 6692100775543181065}
   - component: {fileID: 8873556655610262047}
   - component: {fileID: 4321557188294752108}
+  - component: {fileID: 142572336574660157}
   m_Layer: 0
   m_Name: VictoryCanvas
   m_TagString: Untagged
@@ -5195,6 +5196,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &142572336574660157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522956712256118784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a9e5adcaa61b04fa6dc48941d6dfc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  pauseButton: {fileID: 0}
+  configPanel: {fileID: 0}
+  instructionPanel: {fileID: 0}
+  creditsPanel: {fileID: 0}
+  tutorial: []
 --- !u!1 &7965054751084309468
 GameObject:
   m_ObjectHideFlags: 0
