@@ -6,6 +6,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource bgm;
+    [SerializeField] AudioClip[] musics;
     [SerializeField] AudioSource sfx;
     [SerializeField] AudioClip[] globalSounds;
     SaveManagement save;
@@ -32,6 +33,14 @@ public class SoundManager : MonoBehaviour
         bgm.clip = music;
         bgm.Play();
         bgm.loop = true;         
+    }
+
+    public void ChangeBGM(int musicIndex)
+    {
+        if (musicIndex >= musics.Length) return;
+        bgm.clip = musics[musicIndex];
+        bgm.Play();
+        bgm.loop = true;
     }
 
     public void PlaySFX(int index)

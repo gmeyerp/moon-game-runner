@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private Scene currentScene;
+    private int currentScene;
     public bool gameOver;
 
     void Awake()
@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
-
-        currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()
@@ -29,6 +27,7 @@ public class GameManager : MonoBehaviour
     public void PlayerLose()
     {
         SceneManager.LoadScene(3);
+        SoundManager.instance.ChangeBGM(3);
     }
 
     public void PlayerWin()
@@ -38,7 +37,9 @@ public class GameManager : MonoBehaviour
 
     public void BossDefeat()
     {
+        currentScene = 2;
         SceneManager.LoadScene(2);
+        SoundManager.instance.ChangeBGM(2);
     }
 
     private void CheckInput()
@@ -49,7 +50,18 @@ public class GameManager : MonoBehaviour
             if (lastTouch.phase == TouchPhase.Ended)
             {
                 SceneManager.LoadScene(2);
+                SoundManager.instance.ChangeBGM(2);
             }
         }
+    }
+
+    public int GetCurrentScene()
+    {
+        return currentScene;
+    }
+
+    public void SetCurrentScene(int scene)
+    {
+        currentScene = scene;
     }
 }

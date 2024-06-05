@@ -47,6 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 7112398560555517094}
+  musics:
+  - {fileID: 8300000, guid: efd25ceec7667fb41bfe7a40f67cdf12, type: 3}
+  - {fileID: 8300000, guid: 374e045d6b2d2c04dbb7a35029f2e514, type: 3}
+  - {fileID: 8300000, guid: e2c27e4aa8c92a847a4edd97b037b049, type: 3}
+  - {fileID: 8300000, guid: 67cb718b4f52c64418de0cb7fc86561a, type: 3}
   sfx: {fileID: 3538517952816332813}
   globalSounds:
   - {fileID: 8300000, guid: eb1bcc0534dfe124189757c1d83aa610, type: 3}

@@ -69,3 +69,4 @@ MonoBehaviour:
   bossPrefab: {fileID: 3895130581571568105, guid: 7ad667eea3c24964792320f16f71cfa4,
     type: 3}
   spawnDistance: 30
+  bossText: {fileID: 0}

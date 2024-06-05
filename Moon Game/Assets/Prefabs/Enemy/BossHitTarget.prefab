@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70110f5eb4dea1e40b4db22159416816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectSound: {fileID: 8300000, guid: 3b9ff2474b1218840808aa37ef988635, type: 3}
+  collectVFX: {fileID: 8623425253666602035, guid: 40f8d7eae9272604582109a38d1de56c,
+    type: 3}
   drainTrigger: {fileID: 0}
 --- !u!1001 &6217109531025320671
 PrefabInstance:
