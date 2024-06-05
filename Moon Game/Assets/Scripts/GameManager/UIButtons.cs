@@ -24,12 +24,14 @@ public class UIButtons : MonoBehaviour
 
     public void ReturnMenu()
     {
+        Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene(0);
         ButtonClicked();
     }
 
     public void ReplayGame() //depois tem a opcao de colocar um contador de fases
     {
+        Destroy(GameManager.instance.gameObject);
         SceneManager.LoadScene(1);
         ButtonClicked();
     }
@@ -55,13 +57,13 @@ public class UIButtons : MonoBehaviour
         pauseButton.SetActive(true);
         pausePanel.SetActive(false);
         StartCoroutine(IUnpauseDelay());
-        UIButtons.ui_is_Open = false;
         ButtonClicked();
     }
 
     IEnumerator IUnpauseDelay()
     {
         yield return new WaitForEndOfFrame();
+        UIButtons.ui_is_Open = false;
     }
 
     public void OpenConfig()

@@ -73,6 +73,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.gameOver) return;
+
         playerPos = transform.position;
         UpdateTimer();
 

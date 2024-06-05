@@ -2203,6 +2203,7 @@ MonoBehaviour:
   - {fileID: 5828356633545707474, guid: b187ed17c2fa8df4ab3234b102ea7dd3, type: 3}
   - {fileID: 6212054666407378195, guid: d6ad4f2cc98e0b24682583b7972505ca, type: 3}
   - {fileID: 2949525713846245833, guid: 47272de26e7514441af848a9db4b7f1e, type: 3}
+  - {fileID: 8595993808151490821, guid: 957419df0eaf1ee42a12afe70430dbc5, type: 3}
   instantiatedPlatforms: []
   bossPrefab: {fileID: 3895130581571568105, guid: 7ad667eea3c24964792320f16f71cfa4,
     type: 3}

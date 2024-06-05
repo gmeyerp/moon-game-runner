@@ -58,22 +58,10 @@ public class PlatformRandomizer : MonoBehaviour
         if (cont < platforms.Length) //se o contador se manter menor que o maximo ainda ha plataformas para colocar
         {
             instantiatedPlatforms[cont] = Instantiate(platforms[cont], positions[cont].position, Quaternion.identity);
+            if (cont == platforms.Length - 1)
+            {
+                bossFight = true;
+            }
         }
-        else
-        {
-            StartBossFight();
-        }
-    }
-
-    void StartBossFight()
-    {
-        bossFight = true;
-        StartCoroutine(SummonBoss());
-    }
-
-    IEnumerator SummonBoss()
-    {
-        yield return new WaitForSeconds(bossDelay);
-        Instantiate(bossPrefab, positions[positions.Length - 1].position, Quaternion.identity);
     }
 }
