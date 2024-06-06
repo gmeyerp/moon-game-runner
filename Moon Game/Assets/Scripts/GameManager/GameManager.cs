@@ -2,28 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private Scene currentScene;
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] AudioMixer audioMixer;
-    [SerializeField] GameObject pauseButton;
+    private int currentScene;
+    public bool gameOver;
 
     void Awake()
     {
         if (instance == null)
-        instance = this;
+            instance = this;
         else
-        Destroy(gameObject);
+            Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+    }
 
-        currentScene = SceneManager.GetActiveScene();
-        DefineOrientation(currentScene);
-        pauseMenu.SetActive(false);
+    private void Start()
+    {
+        gameOver = false;
     }
 
     void Update()
@@ -33,29 +31,20 @@ public class GameManager : MonoBehaviour
 
     public void PlayerLose()
     {
-        SceneManager.LoadScene(2);
+        SoundManager.instance.ChangeBGM(3);
+        SceneManager.LoadScene(3);
     }
 
     public void PlayerWin()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
     public void BossDefeat()
     {
-        SceneManager.LoadScene(3);
-    }
-
-    private void DefineOrientation(Scene scene)
-    {
-        if (scene.name == "00 StartScene" || scene.name == "01 FirstLevel" || scene.name == "02 LoseScene" || scene.name == "03 Win Scene")
-        {
-            Screen.orientation = ScreenOrientation.LandscapeLeft;
-        }
-        else if(scene.name == "04 SecondLevel")
-        {
-            Screen.orientation = ScreenOrientation.Portrait;
-        }
+        currentScene = 2;
+        SoundManager.instance.ChangeBGM(2);
+        SceneManager.LoadScene(2);
     }
 
     private void CheckInput()
@@ -65,28 +54,19 @@ public class GameManager : MonoBehaviour
             Touch lastTouch = Input.GetTouch(4);
             if (lastTouch.phase == TouchPhase.Ended)
             {
-                SceneManager.LoadScene(4);
+                SoundManager.instance.ChangeBGM(2);
+                SceneManager.LoadScene(2);
             }
         }
     }
 
-    public void PauseGame()
+    public int GetCurrentScene()
     {
-        pauseMenu.SetActive(true);
-        pauseButton.SetActive(false);
-        Time.timeScale = 0f;
+        return currentScene;
     }
 
-    public void ResumeGame()
+    public void SetCurrentScene(int scene)
     {
-        pauseMenu.SetActive(false);
-        pauseButton.SetActive(true);
-        Time.timeScale = 1f;
-
-    }
-
-    public void SetVolume(float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
+        currentScene = scene;
     }
 }

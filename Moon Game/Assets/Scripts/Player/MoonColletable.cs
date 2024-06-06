@@ -10,9 +10,9 @@ public class MoonColletable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            Player player = other.GetComponent<Player>();
+            Player player = Player.playerInstance;
             player.ActivateLightVFX();
-            player.PlayerIncreseLight();
+            player.PlayerIncreaseLight();
 
             Destroy(gameObject);
             SoundManager.instance.PlaySFX(collectSFX);

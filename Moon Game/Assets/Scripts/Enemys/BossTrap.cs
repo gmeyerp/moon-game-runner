@@ -9,7 +9,7 @@ public class BossTrap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player player = other.GetComponent<Player>();
+            Player player = Player.playerInstance;
             player.TakeDamage();
             Destroy(gameObject);
         }

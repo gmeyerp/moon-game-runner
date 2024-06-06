@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    public static Player playerInstance;
+    public static Vector3 playerPos;
     public int enemyScore;
     private Rigidbody rb;
     Animator animator;
@@ -15,6 +18,7 @@ public class Player : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
+    [SerializeField] bool isHorizontal = true;
 
     [Header("Dash Skill")]
     public bool isDashingH;
@@ -52,6 +56,15 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        if (playerInstance == null)
+        {
+            playerInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
         animator = GetComponent<Animator>();
@@ -60,6 +73,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.gameOver) return;
+
+        playerPos = transform.position;
         UpdateTimer();
 
         CheckPosition();
@@ -92,6 +108,7 @@ public class Player : MonoBehaviour
 
     private void CheckInput()
     {
+        if (UIButtons.ui_is_Open) return;
         if (Input.touchCount > 0)
         {
             Touch firstTouch = Input.GetTouch(0);
@@ -109,6 +126,17 @@ public class Player : MonoBehaviour
                 {
                     if (horizontalDashTimer >= horizontalDashCD)
                     {
+                        if (!isHorizontal)
+                        {
+                            if (faceDirection > 0 && endTouchPosition.x <= startTouchPosition.x - swipeDistance)
+                            {
+                                RotatePlayer();
+                            }
+                            else if (faceDirection < 0 && endTouchPosition.x >= startTouchPosition.x + swipeDistance)
+                            {
+                                RotatePlayer();
+                            }
+                        }
                         dashFX.Play();
                         SoundManager.instance.PlaySFX(dashSFX);                        
 
@@ -175,7 +203,7 @@ public class Player : MonoBehaviour
         }        
     }
 
-    public void PlayerIncreseLight()
+    public void PlayerIncreaseLight()
     {
         lightController.IncreaseLight();
     }
@@ -195,7 +223,7 @@ public class Player : MonoBehaviour
     {
         if (!isDashingH)
         {
-            Vector3 forwardMove = transform.right * speed * Time.deltaTime;
+            Vector3 forwardMove = faceDirection * transform.right * speed * Time.deltaTime;
             rb.MovePosition(rb.position + forwardMove);
         }
     }
@@ -212,7 +240,7 @@ public class Player : MonoBehaviour
     {
         if (dashDurationTimer >= 0)
         {
-            rb.velocity = dashForce * Vector3.right;
+            rb.velocity = faceDirection * dashForce * Vector3.right;
         }
         else
         {
@@ -246,11 +274,9 @@ public class Player : MonoBehaviour
         collectable.Play();
     }
 
-    public void rotatePlayer()
+    public void RotatePlayer()
     {
-        Quaternion currentRotation = transform.rotation;
-        Quaternion backwardRotation = Quaternion.Euler(0f, 180f, 0f);
-        transform.rotation = currentRotation * backwardRotation;
+        faceDirection *= -1;
     }
 }
 
