@@ -156,6 +156,7 @@ MonoBehaviour:
   enemyScore: 0
   speed: 7
   faceDirection: 1
+  isHorizontal: 1
   isDashingH: 0
   isDashingV: 0
   horizontalDashCD: 1
@@ -244,8 +245,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 50
   m_Range: 40
-  m_SpotAngle: 110
-  m_InnerSpotAngle: 90
+  m_SpotAngle: 109.99999
+  m_InnerSpotAngle: 109.99999
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -328,12 +329,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightAngle: 40
-  delta: 40
+  delta: 0
   lightIncrement: 14
   lerpSpeed: 0.08
   incrementsNumber: 8
   amountToDie: 3
-  decreaseSpeed: 7
+  decreaseSpeed: 5
   intensityRange: 30
   flickerCD: 0.15
 --- !u!1001 &321534353488176983
