@@ -8,6 +8,7 @@ public class VictoryTrigger : MonoBehaviour
     [SerializeField] Transform finalFruit;
     [SerializeField] float speed;
     [SerializeField] GameObject victoryVFX;
+    [SerializeField] AudioClip victorySFX;
     [SerializeField] float winDelay = 2f;
     [SerializeField] GameObject victoryCanvas;
 
@@ -27,8 +28,8 @@ public class VictoryTrigger : MonoBehaviour
     IEnumerator EndGame(float delay)
     {
         victoryVFX.SetActive(true);
+        SoundManager.instance.PlaySFX(victorySFX);
         yield return new WaitForSeconds(delay);
         victoryCanvas.SetActive(true);
-
     }
 }
