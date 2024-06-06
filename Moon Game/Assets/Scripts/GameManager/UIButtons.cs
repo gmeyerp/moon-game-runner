@@ -20,6 +20,7 @@ public class UIButtons : MonoBehaviour
     {
         GameManager.instance.SetCurrentScene(1);
         SceneManager.LoadScene(1);
+        SoundManager.instance.ChangeBGM(1);
         GameManager.instance.gameOver = false;
         ButtonClicked();
     }
