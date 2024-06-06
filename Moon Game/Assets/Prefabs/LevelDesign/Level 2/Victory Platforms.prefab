@@ -118,6 +118,7 @@ MonoBehaviour:
   finalFruit: {fileID: 5516539971147568306}
   speed: 2
   victoryVFX: {fileID: 6176617203432997523}
+  victorySFX: {fileID: 8300000, guid: 813bbdb8146417442a4c1b666c3b2e9d, type: 3}
   winDelay: 2
   victoryCanvas: {fileID: 7522956712256118784}
 --- !u!1 &5435044946974441188
@@ -6656,7 +6657,7 @@ PrefabInstance:
     - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReplayGame
+      value: StartGame
       objectReference: {fileID: 0}
     - target: {fileID: 8682138423770508469, guid: 717f1a12142ef9943bcc27c728aa20fd,
         type: 3}

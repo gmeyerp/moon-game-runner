@@ -18,9 +18,9 @@ public class UIButtons : MonoBehaviour
     }
     public void StartGame()
     {
-        GameManager.instance.gameOver = false;
         GameManager.instance.SetCurrentScene(1);
         SceneManager.LoadScene(1);
+        GameManager.instance.gameOver = false;
         ButtonClicked();
     }
 
