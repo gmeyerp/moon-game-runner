@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Moxel
+  m_Name: Mat_Aumbra
   m_Shader: {fileID: 4800000, guid: 80aa867ac363ac043847b06ad71604cd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: cb2f80a1724349e49b0bae25d1e2555b, type: 3}
+        m_Texture: {fileID: 2800000, guid: f3ebcf6b84b0f3b4d989039538a85e8c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0751d86fc752db743af478f480c56fde, type: 3}
+        m_Texture: {fileID: 2800000, guid: 00b5867e98a59404a807b5f34ef1c9be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
