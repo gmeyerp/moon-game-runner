@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,7 +10,8 @@ public class Player : MonoBehaviour
     public static Vector3 playerPos;
     public int enemyScore;
     private Rigidbody rb;
-    Animator animator;
+    [SerializeField] Animator animator;
+    [SerializeField] GameObject model;
 
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour
     bool isInvulnerable;
     [SerializeField] float invulnerabilityCD = 1f;
     bool isCheating;
+    [SerializeField] float deathDelay = 1.6f;
+    bool isDead;
 
     void Awake()
     {
@@ -67,13 +71,12 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
-        animator = GetComponent<Animator>();
         isInvulnerable = false;
     }
 
     void Update()
     {
-        if (GameManager.instance.gameOver) return;
+        if (GameManager.instance.gameOver || isDead) return;
 
         playerPos = transform.position;
         UpdateTimer();
@@ -82,6 +85,7 @@ public class Player : MonoBehaviour
         BaseMovement();
         CheckInput();
 
+        animator.SetBool("isGrounded", isGrounded);
 
         if (isDashingH)
         {
@@ -180,12 +184,22 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(jumpForce * Vector3.up);
+        animator.SetTrigger("Jump");
         isGrounded = false;
     }
 
     public void Die()
     {
+        isDead = true;
+        animator.SetBool("isDead", true);
         SoundManager.instance.PlaySFX(hitSFX);
+        StartCoroutine(DeathTimer());
+        speed = 1f;        
+    }
+
+    IEnumerator DeathTimer()
+    {
+        yield return new WaitForSeconds(deathDelay);
         GameManager.instance.PlayerLose();
     }
 
@@ -199,7 +213,6 @@ public class Player : MonoBehaviour
             invulnerabilityTimer = 0;
             SoundManager.instance.PlaySFX(hitSFX);
             hitVFX.Play();
-            animator.SetTrigger("TakeDamage");
         }        
     }
 
@@ -218,6 +231,7 @@ public class Player : MonoBehaviour
         Ray ray = new Ray(transform.position, Vector3.down);
         isGrounded = Physics.Raycast(ray, groundDistance, isGround);
     }
+
 
     private void BaseMovement()
     {
@@ -276,6 +290,7 @@ public class Player : MonoBehaviour
 
     public void RotatePlayer()
     {
+        model.transform.Rotate(Vector3.up, 180f);
         faceDirection *= -1;
     }
 }
