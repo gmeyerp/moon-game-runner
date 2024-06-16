@@ -10,15 +10,28 @@ public class Enemy : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] Vulnerability vulnerability;
     [SerializeField] GameObject deathVFX;
+    [SerializeField] Animator animator;
+    [SerializeField] float animRange;
+    [SerializeField] float deathDelay = 1f;
     Player player;
+
+    private void Update()
+    {
+        if (Vector3.Distance(transform.position, Player.playerInstance.gameObject.transform.position) <= animRange)
+        {
+            if (animator != null)
+                animator.SetTrigger("PlayerRange");
+        }
+    }
     private void Die()
     {
         GameObject vfxObject = Instantiate(deathVFX, transform.position, deathVFX.transform.rotation);
         player.PlayerIncreaseLight();
-        Destroy(gameObject);        
+        if (animator != null)
+            animator.SetTrigger("Death");
+        Debug.Log("enemy dead");
+        Destroy(gameObject, deathDelay);        
     }
-
-    //Tipos de colis�o com o player.
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
