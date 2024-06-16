@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2048
     height: 1068.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Simulator
   m_RootView: {fileID: 3}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -516,6 +516,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
+
       scrollPos: {x: 0, y: 11.599976}
       m_SelectedIDs: 666bfcff
       m_LastClickedID: -234650
@@ -524,12 +525,14 @@ MonoBehaviour:
         m_UserAcceptedRename: 0
         m_Name: Moxel
         m_OriginalName: Moxel
+
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
+
         m_UserData: -3298
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
