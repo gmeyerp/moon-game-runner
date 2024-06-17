@@ -6,7 +6,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     Player player;
-    Animator animator;
+    [SerializeField] Animator animator;
     bool isDamaged;
     bool isDefeated;
 
@@ -101,6 +101,7 @@ public class Boss : MonoBehaviour
     public void Fall()
     {
         isDamaged = true;
+        animator.SetBool("isDamaged", true);
     }
 
     void OnTriggerEnter(Collider other)
@@ -130,6 +131,7 @@ public class Boss : MonoBehaviour
     void Recover()
     {
         isDamaged = false;
+        animator.SetBool("isDamaged", false);
         ActivateTraps();
     }
 

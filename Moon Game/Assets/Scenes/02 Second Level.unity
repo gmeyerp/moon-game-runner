@@ -123,33 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &6997343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7004323107664501252, guid: 7ad667eea3c24964792320f16f71cfa4,
-    type: 3}
-  m_PrefabInstance: {fileID: 809907874}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &6997345
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6997343}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 502a12660fc98fe4e939cb9d6eb9aa1f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &38123455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,10 +2666,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 702498695}
-    - targetCorrespondingSourceObject: {fileID: 7004323107664501252, guid: 7ad667eea3c24964792320f16f71cfa4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6997345}
   m_SourcePrefab: {fileID: 100100000, guid: 7ad667eea3c24964792320f16f71cfa4, type: 3}
 --- !u!1 &871050989
 GameObject:
