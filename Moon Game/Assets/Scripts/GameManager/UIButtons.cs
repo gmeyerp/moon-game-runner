@@ -18,6 +18,7 @@ public class UIButtons : MonoBehaviour
     }
     public void StartGame()
     {
+        Time.timeScale = 1f;
         GameManager.instance.SetCurrentScene(1);
         SceneManager.LoadScene(1);
         SoundManager.instance.ChangeBGM(1);
@@ -34,8 +35,9 @@ public class UIButtons : MonoBehaviour
         ButtonClicked();
     }
 
-    public void ReplayGame() //depois tem a opcao de colocar um contador de fases
+    public void ReplayGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(GameManager.instance.GetCurrentScene());        
         SoundManager.instance.ChangeBGM(GameManager.instance.GetCurrentScene());
         GameManager.instance.gameOver = false;
