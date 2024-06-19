@@ -19750,6 +19750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08869d5ae8db8a43a1a5a81437cfb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7505215925741449417}
   heightPosition: 5
   playerDelta: 15
   floatSpeed: 0.1
