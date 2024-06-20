@@ -3313,8 +3313,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Daniel Pinheiro Lima\nJo\xE3o Paula de Lima Silva\nLuis Felipe Matsya\nRoque
-    Anderson Saldanha Teixeira"
+  m_text: "Daniel Pinheiro Lima\nJo\xE3o Paula de Lima Silva\nLuis Felipe Garrocho\nRoque
+    Anderson"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21e0ab98349de6d4ca7ae726fa6450dc, type: 2}
   m_sharedMaterial: {fileID: -7770224869621931260, guid: 21e0ab98349de6d4ca7ae726fa6450dc,

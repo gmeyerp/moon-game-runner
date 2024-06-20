@@ -37,7 +37,6 @@ Transform:
   - {fileID: 6865036861160582839}
   - {fileID: 9039654226391598112}
   - {fileID: 3080225013962076873}
-  - {fileID: 7051463973711983609}
   - {fileID: 5373871577250987928}
   - {fileID: 1835100541626741879}
   m_Father: {fileID: 0}
@@ -154,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyScore: 0
   animator: {fileID: 0}
+  model: {fileID: 0}
   speed: 7
   faceDirection: 1
   isHorizontal: 1
@@ -403,12 +403,27 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 733117198834913686}
+    m_TransformParent: {fileID: 8570742640602575326}
     m_Modifications:
     - target: {fileID: 333316518753180573, guid: 4ae68cc253d915b468f6c530172eb54e,
         type: 3}
       propertyPath: m_Name
       value: PowerUpVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220157322154644463, guid: 4ae68cc253d915b468f6c530172eb54e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220157322154644463, guid: 4ae68cc253d915b468f6c530172eb54e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220157322154644463, guid: 4ae68cc253d915b468f6c530172eb54e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9220157322154644463, guid: 4ae68cc253d915b468f6c530172eb54e,
         type: 3}
@@ -418,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 9220157322154644463, guid: 4ae68cc253d915b468f6c530172eb54e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.002
       objectReference: {fileID: 0}
     - target: {fileID: 9220157322154644463, guid: 4ae68cc253d915b468f6c530172eb54e,
         type: 3}
@@ -542,7 +557,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7497449121123164738, guid: 4f68598555710454d8da4a9b0b0e386b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7051463973711983609}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4f68598555710454d8da4a9b0b0e386b,
         type: 3}
@@ -579,6 +598,12 @@ Animator:
 --- !u!4 &1835100541626741879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f68598555710454d8da4a9b0b0e386b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2232992964592047004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8570742640602575326 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7497449121123164738, guid: 4f68598555710454d8da4a9b0b0e386b,
     type: 3}
   m_PrefabInstance: {fileID: 2232992964592047004}
   m_PrefabAsset: {fileID: 0}

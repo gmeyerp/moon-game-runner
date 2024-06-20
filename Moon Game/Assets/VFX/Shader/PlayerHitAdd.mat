@@ -48,10 +48,10 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Blend: 2
+    - _Blend: 0
     - _CastShadows: 0
     - _Cull: 2
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
