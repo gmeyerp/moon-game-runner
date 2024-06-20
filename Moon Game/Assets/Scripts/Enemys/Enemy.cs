@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [Header("Base Stats")]
     [SerializeField] Vulnerability vulnerability;
     [SerializeField] GameObject deathVFX;
+    [SerializeField] AudioClip deathSFX;
     [SerializeField] Animator animator;
     [SerializeField] float animRange;
     [SerializeField] float deathDelay = 1f;
@@ -29,6 +30,8 @@ public class Enemy : MonoBehaviour
         player.PlayerIncreaseLight();
         if (animator != null)
             animator.SetTrigger("Death");
+        if (deathSFX != null)
+            SoundManager.instance.PlaySFX(deathSFX);
         Debug.Log("enemy dead");
         Destroy(gameObject, deathDelay);        
     }
