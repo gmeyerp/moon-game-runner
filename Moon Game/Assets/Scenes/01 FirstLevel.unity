@@ -1562,7 +1562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isVertical: 0
-  offset: 10
+  offset: 9
   height: 2
   lerpSpeed: 0.5
   player: {fileID: 2079483557}
