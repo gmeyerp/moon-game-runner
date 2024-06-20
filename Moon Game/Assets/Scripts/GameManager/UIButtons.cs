@@ -23,6 +23,7 @@ public class UIButtons : MonoBehaviour
         SceneManager.LoadScene(1);
         SoundManager.instance.ChangeBGM(1);
         GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
         ButtonClicked();
     }
 
@@ -32,6 +33,7 @@ public class UIButtons : MonoBehaviour
         SceneManager.LoadScene(0);
         SoundManager.instance.ChangeBGM(0);
         GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
         ButtonClicked();
     }
 
@@ -41,6 +43,7 @@ public class UIButtons : MonoBehaviour
         SceneManager.LoadScene(GameManager.instance.GetCurrentScene());        
         SoundManager.instance.ChangeBGM(GameManager.instance.GetCurrentScene());
         GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
         ButtonClicked();
     }
 
