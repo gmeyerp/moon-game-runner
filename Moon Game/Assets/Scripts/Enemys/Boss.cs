@@ -72,10 +72,12 @@ public class Boss : MonoBehaviour
 
     IEnumerator CDrainTimer(float drainDelay, float drainFinish)
     {
+        animator.SetBool("isCasting", true);
         yield return new WaitForSeconds(drainDelay);
         Debug.Log("Drain");
         LightController.playerLight.DecreaseLight(false);
         yield return new WaitForSeconds(drainFinish);
+        animator.SetBool("isCasting", false);
         ActivateTraps();
     }
     void CreateTraps()
@@ -87,7 +89,9 @@ public class Boss : MonoBehaviour
 
     IEnumerator CTrapsTimer(float trapsActivateTimer)
     {
+        animator.SetBool("isCasting", true);
         yield return new WaitForSeconds(trapsActivateTimer);
+        animator.SetBool("isCasting", false);
         CreateTraps();
     }
 
