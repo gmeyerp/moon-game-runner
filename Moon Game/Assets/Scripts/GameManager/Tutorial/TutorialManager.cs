@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public enum TutorialMoment {Light, Jump, DashH, DashV, Invulnerable, End}
 public class TutorialManager : MonoBehaviour
