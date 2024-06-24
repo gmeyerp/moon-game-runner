@@ -712,6 +712,7 @@ MonoBehaviour:
   vulnerability: 0
   deathVFX: {fileID: 7486234987976697870, guid: 63a1ccb303e202e4e957a5fea2085e9c,
     type: 3}
+  deathSFX: {fileID: 8300000, guid: 58a8f31fc85bcb8408ad9f18f8340231, type: 3}
   animator: {fileID: 5859620482724352548}
   animRange: 12
   deathDelay: 1

@@ -86,6 +86,8 @@ public class Player : MonoBehaviour
         CheckInput();
 
         animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isDashingH", isDashingH);
+        animator.SetBool("isDashingV", isDashingV);
 
         if (isDashingH)
         {
