@@ -313,5 +313,10 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.useGravity = value;
     }
+
+    public void EnterIdle()
+    {
+        animator.SetTrigger("GameOver");
+    }
 }
 
