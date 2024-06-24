@@ -11,6 +11,7 @@ public class UIButtons : MonoBehaviour
     [SerializeField] GameObject instructionPanel;
     [SerializeField] GameObject creditsPanel;
     [SerializeField] GameObject[] tutorial;
+    [SerializeField] GameObject startPanel;
     public static bool ui_is_Open;
     private void ButtonClicked()
     {
@@ -107,5 +108,21 @@ public class UIButtons : MonoBehaviour
         {
             info.SetActive(!info.activeSelf);
         }
+    }
+
+    public void StartOptions()
+    {
+        startPanel.SetActive(!startPanel.activeSelf);
+    }
+
+    public void StartTutorial()
+    {
+        Time.timeScale = 1f;
+        GameManager.instance.SetCurrentScene(4);
+        SceneManager.LoadScene(4);
+        SoundManager.instance.ChangeBGM(1);
+        GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
+        ButtonClicked();
     }
 }
