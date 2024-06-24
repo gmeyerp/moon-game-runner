@@ -20,6 +20,7 @@ public class VictoryTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Player.playerInstance.EndDash();
             Destroy(GameObject.FindGameObjectWithTag("PauseCanvas"));
             GameManager.instance.gameOver = true;
             StartCoroutine(EndGame(winDelay));

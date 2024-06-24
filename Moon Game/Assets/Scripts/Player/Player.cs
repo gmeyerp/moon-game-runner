@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
     [SerializeField] bool isHorizontal = true;
+    [SerializeField] bool isTutorial;
 
     [Header("Dash Skill")]
     public bool isDashingH;
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (GameManager.instance.gameOver || isDead) return;
+        if (UIButtons.ui_is_Open) return;
 
         playerPos = transform.position;
         UpdateTimer();
@@ -114,7 +116,7 @@ public class Player : MonoBehaviour
 
     private void CheckInput()
     {
-        if (UIButtons.ui_is_Open) return;
+        if (isTutorial) return;
         if (Input.touchCount > 0)
         {
             Touch firstTouch = Input.GetTouch(0);
@@ -143,26 +145,14 @@ public class Player : MonoBehaviour
                                 RotatePlayer();
                             }
                         }
-                        dashFX.Play();
-                        SoundManager.instance.PlaySFX(dashSFX);                        
-
-                        isDashingH = true;
-                        dashDurationTimer = dashDuration;
-
-                        horizontalDashTimer = 0f;
-                    }                    
+                        StartDashH();
+                    }
                 }
                 else if (endTouchPosition.y <= startTouchPosition.y - swipeDistance)
                 {
                     if (verticalDashTimer >= verticalDashCD)
                     {
-                        dashFX.Play();
-                        SoundManager.instance.PlaySFX(dashSFX);
-
-                        isDashingV = true;
-                        dashDurationTimer = dashDuration;
-                
-                        verticalDashTimer = 0f;
+                        StartDashV();
                     }
                 }
                 else if (isGrounded)
@@ -183,7 +173,29 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void StartDashV()
+    {
+        dashFX.Play();
+        SoundManager.instance.PlaySFX(dashSFX);
+
+        isDashingV = true;
+        dashDurationTimer = dashDuration;
+
+        verticalDashTimer = 0f;
+    }
+
+    public void StartDashH()
+    {
+        dashFX.Play();
+        SoundManager.instance.PlaySFX(dashSFX);
+
+        isDashingH = true;
+        dashDurationTimer = dashDuration;
+
+        horizontalDashTimer = 0f;
+    }
+
+    public void Jump()
     {
         rb.AddForce(jumpForce * Vector3.up);
         animator.SetTrigger("Jump");
@@ -294,6 +306,12 @@ public class Player : MonoBehaviour
     {
         model.transform.Rotate(Vector3.up, 180f);
         faceDirection *= -1;
+    }
+
+    public void PlayerGravity(bool value)
+    {
+        rb.velocity = Vector3.zero;
+        rb.useGravity = value;
     }
 }
 
