@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Moxel Rig|Action
-      takeName: Moxel Rig|Action
+      name: Moxel Rig|MoxelDashH (1)
+      takeName: Moxel Rig|MoxelDashH
       internalID: 953885035969437569
       firstFrame: 0
-      lastFrame: 12
+      lastFrame: 11
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -153,7 +153,7 @@ ModelImporter:
       takeName: Moxel Rig|MoxelDashV
       internalID: 8705588613450867361
       firstFrame: 0
-      lastFrame: 12
+      lastFrame: 11
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -323,7 +323,7 @@ public class Player : MonoBehaviour
 
     public void EnterIdle()
     {
-        animator.SetTrigger("GameOver");
+        animator.SetBool("GameOver", true);
     }
 }
 
