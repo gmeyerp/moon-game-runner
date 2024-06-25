@@ -157,6 +157,7 @@ MonoBehaviour:
   speed: 7
   faceDirection: 1
   isHorizontal: 1
+  isTutorial: 0
   isDashingH: 0
   isDashingV: 0
   horizontalDashCD: 1
@@ -169,6 +170,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundDistance: 0.57
+  hangTime: 0.2
   steps: {fileID: 4932974845504388548}
   collectable: {fileID: 8347693086058457280}
   dashFX: {fileID: 7324313931672980366}

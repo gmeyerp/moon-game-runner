@@ -2956,7 +2956,7 @@ MonoBehaviour:
   isVertical: 1
   offset: 10
   height: 2
-  lerpSpeed: 0.05
+  lerpSpeed: 0.07
   player: {fileID: 2079483557}
 --- !u!114 &963194230
 MonoBehaviour:

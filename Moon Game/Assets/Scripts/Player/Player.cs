@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForce = 800;
     [SerializeField] LayerMask isGround;
     [SerializeField] float groundDistance;
+    [SerializeField] float hangTime = 0.2f;
+    float hangCounter;
     bool isGrounded;
 
     [Header("VFX")]
@@ -155,7 +157,7 @@ public class Player : MonoBehaviour
                         StartDashV();
                     }
                 }
-                else if (isGrounded)
+                else if (hangCounter > 0)
                 {
                     Jump();
                 }
@@ -197,6 +199,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
+        hangCounter = 0f;
         rb.AddForce(jumpForce * Vector3.up);
         animator.SetTrigger("Jump");
         isGrounded = false;
@@ -258,6 +261,10 @@ public class Player : MonoBehaviour
 
     private void UpdateTimer()
     {
+        if (isGrounded)
+            hangCounter = hangTime;
+        else
+            hangCounter -= Time.deltaTime;
         horizontalDashTimer += Time.deltaTime;
         verticalDashTimer += Time.deltaTime;
         dashDurationTimer -= Time.deltaTime;
