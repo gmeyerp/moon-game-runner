@@ -131,6 +131,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1983212508}
     m_Modifications:
+    - target: {fileID: 846583524957594473, guid: 96d03d04a553b314eb2c66fd76170b34,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2286040287284638154, guid: 96d03d04a553b314eb2c66fd76170b34,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3398,8 +3403,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Light radius decreases over time. If you are when it's flickering you
-    die.
+  m_text: The Light radius decreases over time. If you are hit when it's flickering
+    you die.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21e0ab98349de6d4ca7ae726fa6450dc, type: 2}
   m_sharedMaterial: {fileID: -7770224869621931260, guid: 21e0ab98349de6d4ca7ae726fa6450dc,
@@ -4489,6 +4494,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 531481953}
     m_Modifications:
+    - target: {fileID: 846583524957594473, guid: 96d03d04a553b314eb2c66fd76170b34,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2286040287284638154, guid: 96d03d04a553b314eb2c66fd76170b34,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6505,7 +6515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enemies show as Red Lights in the dark. The Light reveals what type of
+  m_text: Enemies appear as Red Lights in the dark. The Light reveals what type of
     enemy they are.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21e0ab98349de6d4ca7ae726fa6450dc, type: 2}
