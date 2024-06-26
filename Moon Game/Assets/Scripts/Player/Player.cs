@@ -323,6 +323,9 @@ public class Player : MonoBehaviour
 
     public void EnterIdle()
     {
+        animator.SetBool("isDashingH", false);
+        animator.SetBool("isDashingV", false);
+
         animator.SetBool("GameOver", true);
     }
 }

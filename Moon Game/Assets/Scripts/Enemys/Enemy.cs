@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] float animRange;
     [SerializeField] float deathDelay = 1f;
+    bool isDead;
     Player player;
 
     private void Update()
@@ -26,13 +27,13 @@ public class Enemy : MonoBehaviour
     }
     private void Die()
     {
+        isDead = true;
         GameObject vfxObject = Instantiate(deathVFX, transform.position, deathVFX.transform.rotation);
         player.PlayerIncreaseLight();
         if (animator != null)
             animator.SetTrigger("Death");
         if (deathSFX != null)
             SoundManager.instance.PlaySFX(deathSFX);
-        Debug.Log("enemy dead");
         Destroy(gameObject, deathDelay);        
     }
     void OnTriggerEnter(Collider other)
@@ -46,8 +47,8 @@ public class Enemy : MonoBehaviour
                 {
                     if (player.isDashingH)
                         Die();
-                    else
-                    player.TakeDamage();                    
+                    else if (!isDead)
+                        player.TakeDamage();                    
                     break;
                 }
 
@@ -55,8 +56,8 @@ public class Enemy : MonoBehaviour
                 {
                     if (player.isDashingV)
                         Die();
-                    else
-                    player.TakeDamage();                    
+                    else if (!isDead)
+                        player.TakeDamage();
                     break;
                 }
                 
