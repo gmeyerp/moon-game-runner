@@ -3403,8 +3403,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Light radius decreases over time. If you are when it's flickering you
-    die.
+  m_text: The Light radius decreases over time. If you are hit when it's flickering
+    you die.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21e0ab98349de6d4ca7ae726fa6450dc, type: 2}
   m_sharedMaterial: {fileID: -7770224869621931260, guid: 21e0ab98349de6d4ca7ae726fa6450dc,
@@ -6515,7 +6515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enemies show as Red Lights in the dark. The Light reveals what type of
+  m_text: Enemies appear as Red Lights in the dark. The Light reveals what type of
     enemy they are.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21e0ab98349de6d4ca7ae726fa6450dc, type: 2}
