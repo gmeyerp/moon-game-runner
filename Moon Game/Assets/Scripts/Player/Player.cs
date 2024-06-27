@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,7 +10,8 @@ public class Player : MonoBehaviour
     public static Vector3 playerPos;
     public int enemyScore;
     private Rigidbody rb;
-    Animator animator;
+    [SerializeField] Animator animator;
+    [SerializeField] GameObject model;
 
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 2f;
     public float faceDirection = 1;
     [SerializeField] bool isHorizontal = true;
+    [SerializeField] bool isTutorial;
 
     [Header("Dash Skill")]
     public bool isDashingH;
@@ -36,6 +39,8 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForce = 800;
     [SerializeField] LayerMask isGround;
     [SerializeField] float groundDistance;
+    [SerializeField] float hangTime = 0.2f;
+    float hangCounter;
     bool isGrounded;
 
     [Header("VFX")]
@@ -53,6 +58,8 @@ public class Player : MonoBehaviour
     bool isInvulnerable;
     [SerializeField] float invulnerabilityCD = 1f;
     bool isCheating;
+    [SerializeField] float deathDelay = 1.6f;
+    bool isDead;
 
     void Awake()
     {
@@ -67,13 +74,13 @@ public class Player : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         lightController = GetComponentInChildren<LightController>();
-        animator = GetComponent<Animator>();
         isInvulnerable = false;
     }
 
     void Update()
     {
-        if (GameManager.instance.gameOver) return;
+        if (GameManager.instance.gameOver || isDead) return;
+        if (UIButtons.ui_is_Open) return;
 
         playerPos = transform.position;
         UpdateTimer();
@@ -82,6 +89,9 @@ public class Player : MonoBehaviour
         BaseMovement();
         CheckInput();
 
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isDashingH", isDashingH);
+        animator.SetBool("isDashingV", isDashingV);
 
         if (isDashingH)
         {
@@ -108,7 +118,7 @@ public class Player : MonoBehaviour
 
     private void CheckInput()
     {
-        if (UIButtons.ui_is_Open) return;
+        if (isTutorial) return;
         if (Input.touchCount > 0)
         {
             Touch firstTouch = Input.GetTouch(0);
@@ -137,29 +147,17 @@ public class Player : MonoBehaviour
                                 RotatePlayer();
                             }
                         }
-                        dashFX.Play();
-                        SoundManager.instance.PlaySFX(dashSFX);                        
-
-                        isDashingH = true;
-                        dashDurationTimer = dashDuration;
-
-                        horizontalDashTimer = 0f;
-                    }                    
+                        StartDashH();
+                    }
                 }
                 else if (endTouchPosition.y <= startTouchPosition.y - swipeDistance)
                 {
                     if (verticalDashTimer >= verticalDashCD)
                     {
-                        dashFX.Play();
-                        SoundManager.instance.PlaySFX(dashSFX);
-
-                        isDashingV = true;
-                        dashDurationTimer = dashDuration;
-                
-                        verticalDashTimer = 0f;
+                        StartDashV();
                     }
                 }
-                else if (isGrounded)
+                else if (hangCounter > 0)
                 {
                     Jump();
                 }
@@ -177,15 +175,49 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void StartDashV()
     {
+        dashFX.Play();
+        SoundManager.instance.PlaySFX(dashSFX);
+
+        isDashingV = true;
+        dashDurationTimer = dashDuration;
+
+        verticalDashTimer = 0f;
+    }
+
+    public void StartDashH()
+    {
+        dashFX.Play();
+        SoundManager.instance.PlaySFX(dashSFX);
+
+        isDashingH = true;
+        dashDurationTimer = dashDuration;
+
+        horizontalDashTimer = 0f;
+    }
+
+    public void Jump()
+    {
+        hangCounter = 0f;
         rb.AddForce(jumpForce * Vector3.up);
+        animator.SetTrigger("Jump");
         isGrounded = false;
     }
 
     public void Die()
     {
+        EndDash();
+        isDead = true;
+        animator.SetBool("isDead", true);
         SoundManager.instance.PlaySFX(hitSFX);
+        StartCoroutine(DeathTimer());
+        speed = 1f;        
+    }
+
+    IEnumerator DeathTimer()
+    {
+        yield return new WaitForSeconds(deathDelay);
         GameManager.instance.PlayerLose();
     }
 
@@ -199,7 +231,6 @@ public class Player : MonoBehaviour
             invulnerabilityTimer = 0;
             SoundManager.instance.PlaySFX(hitSFX);
             hitVFX.Play();
-            animator.SetTrigger("TakeDamage");
         }        
     }
 
@@ -219,6 +250,7 @@ public class Player : MonoBehaviour
         isGrounded = Physics.Raycast(ray, groundDistance, isGround);
     }
 
+
     private void BaseMovement()
     {
         if (!isDashingH)
@@ -230,6 +262,10 @@ public class Player : MonoBehaviour
 
     private void UpdateTimer()
     {
+        if (isGrounded)
+            hangCounter = hangTime;
+        else
+            hangCounter -= Time.deltaTime;
         horizontalDashTimer += Time.deltaTime;
         verticalDashTimer += Time.deltaTime;
         dashDurationTimer -= Time.deltaTime;
@@ -276,7 +312,22 @@ public class Player : MonoBehaviour
 
     public void RotatePlayer()
     {
+        model.transform.Rotate(Vector3.up, 180f);
         faceDirection *= -1;
+    }
+
+    public void PlayerGravity(bool value)
+    {
+        rb.velocity = Vector3.zero;
+        rb.useGravity = value;
+    }
+
+    public void EnterIdle()
+    {
+        animator.SetBool("isDashingH", false);
+        animator.SetBool("isDashingV", false);
+
+        animator.SetBool("GameOver", true);
     }
 }
 

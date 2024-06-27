@@ -162,4 +162,9 @@ public class LightController : MonoBehaviour
     {
         this.isDecaying = isDecaying;
     }
+
+    public void SetDecreaseSpeed(float speed)
+    {
+        decreaseSpeed = speed;
+    }
 }

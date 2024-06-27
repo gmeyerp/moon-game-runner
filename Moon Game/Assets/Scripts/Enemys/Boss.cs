@@ -6,7 +6,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     Player player;
-    Animator animator;
+    [SerializeField] Animator animator;
     bool isDamaged;
     bool isDefeated;
 
@@ -72,10 +72,12 @@ public class Boss : MonoBehaviour
 
     IEnumerator CDrainTimer(float drainDelay, float drainFinish)
     {
+        animator.SetBool("isCasting", true);
         yield return new WaitForSeconds(drainDelay);
         Debug.Log("Drain");
         LightController.playerLight.DecreaseLight(false);
         yield return new WaitForSeconds(drainFinish);
+        animator.SetBool("isCasting", false);
         ActivateTraps();
     }
     void CreateTraps()
@@ -87,7 +89,9 @@ public class Boss : MonoBehaviour
 
     IEnumerator CTrapsTimer(float trapsActivateTimer)
     {
+        animator.SetBool("isCasting", true);
         yield return new WaitForSeconds(trapsActivateTimer);
+        animator.SetBool("isCasting", false);
         CreateTraps();
     }
 
@@ -101,6 +105,7 @@ public class Boss : MonoBehaviour
     public void Fall()
     {
         isDamaged = true;
+        animator.SetBool("isDamaged", true);
     }
 
     void OnTriggerEnter(Collider other)
@@ -130,6 +135,7 @@ public class Boss : MonoBehaviour
     void Recover()
     {
         isDamaged = false;
+        animator.SetBool("isDamaged", false);
         ActivateTraps();
     }
 

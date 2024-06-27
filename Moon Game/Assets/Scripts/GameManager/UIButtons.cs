@@ -11,6 +11,7 @@ public class UIButtons : MonoBehaviour
     [SerializeField] GameObject instructionPanel;
     [SerializeField] GameObject creditsPanel;
     [SerializeField] GameObject[] tutorial;
+    [SerializeField] GameObject startPanel;
     public static bool ui_is_Open;
     private void ButtonClicked()
     {
@@ -18,10 +19,12 @@ public class UIButtons : MonoBehaviour
     }
     public void StartGame()
     {
+        Time.timeScale = 1f;
         GameManager.instance.SetCurrentScene(1);
         SceneManager.LoadScene(1);
         SoundManager.instance.ChangeBGM(1);
         GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
         ButtonClicked();
     }
 
@@ -31,14 +34,17 @@ public class UIButtons : MonoBehaviour
         SceneManager.LoadScene(0);
         SoundManager.instance.ChangeBGM(0);
         GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
         ButtonClicked();
     }
 
-    public void ReplayGame() //depois tem a opcao de colocar um contador de fases
+    public void ReplayGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(GameManager.instance.GetCurrentScene());        
         SoundManager.instance.ChangeBGM(GameManager.instance.GetCurrentScene());
         GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
         ButtonClicked();
     }
 
@@ -102,5 +108,21 @@ public class UIButtons : MonoBehaviour
         {
             info.SetActive(!info.activeSelf);
         }
+    }
+
+    public void StartOptions()
+    {
+        startPanel.SetActive(!startPanel.activeSelf);
+    }
+
+    public void StartTutorial()
+    {
+        Time.timeScale = 1f;
+        GameManager.instance.SetCurrentScene(4);
+        SceneManager.LoadScene(4);
+        SoundManager.instance.ChangeBGM(1);
+        GameManager.instance.gameOver = false;
+        UIButtons.ui_is_Open = false;
+        ButtonClicked();
     }
 }
