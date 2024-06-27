@@ -207,6 +207,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        EndDash();
         isDead = true;
         animator.SetBool("isDead", true);
         SoundManager.instance.PlaySFX(hitSFX);
