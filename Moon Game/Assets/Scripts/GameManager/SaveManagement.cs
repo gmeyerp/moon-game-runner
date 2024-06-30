@@ -14,13 +14,16 @@ public class SaveManagement
 
     public void Save()
     {
+        string destination = Application.persistentDataPath + "/" +path;
+        Debug.Log(destination);
         var content = JsonUtility.ToJson(this, true);
-        File.WriteAllText(path, content);
+        File.WriteAllText(destination, content);
     }
 
     public void Load()
     {
-        var content = File.ReadAllText(path);
+        string destination = Application.persistentDataPath + "/" + path;
+        var content = File.ReadAllText(destination);
         var p = JsonUtility.FromJson<SaveManagement>(content);
         sfxVolume = p.sfxVolume;
         bgmVolume = p.bgmVolume;
