@@ -1014,7 +1014,7 @@ PrefabInstance:
     - target: {fileID: 4623667375408802187, guid: e3bae01ced09ccb47a81b9da7f1490b5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4623667375408802187, guid: e3bae01ced09ccb47a81b9da7f1490b5,
         type: 3}
@@ -3455,7 +3455,7 @@ PrefabInstance:
     - target: {fileID: 4623667375408802187, guid: e3bae01ced09ccb47a81b9da7f1490b5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.5
+      value: 15.44
       objectReference: {fileID: 0}
     - target: {fileID: 4623667375408802187, guid: e3bae01ced09ccb47a81b9da7f1490b5,
         type: 3}
@@ -4755,7 +4755,7 @@ PrefabInstance:
     - target: {fileID: 4623667375408802187, guid: e3bae01ced09ccb47a81b9da7f1490b5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.5
+      value: -15.75
       objectReference: {fileID: 0}
     - target: {fileID: 4623667375408802187, guid: e3bae01ced09ccb47a81b9da7f1490b5,
         type: 3}
@@ -4895,6 +4895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dashForce
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 916552473549904568, guid: 960094a494454d54cb6db8c40c67e335,
+        type: 3}
+      propertyPath: jumpForce
+      value: 950
       objectReference: {fileID: 0}
     - target: {fileID: 916552473549904568, guid: 960094a494454d54cb6db8c40c67e335,
         type: 3}
